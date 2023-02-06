@@ -1,0 +1,8 @@
+jar {
+    enabled = true
+}
+dependencies {
+    implementation project(':fluent-plugin')
+    implementation project(':fluent-plugin-core')
+    implementation 'org.java-websocket:Java-WebSocket:1.5.2'
+}
