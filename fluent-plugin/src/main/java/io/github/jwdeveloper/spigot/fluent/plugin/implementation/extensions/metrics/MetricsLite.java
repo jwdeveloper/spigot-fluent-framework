@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.metrics;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.metrics;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

@@ -22,13 +22,12 @@
  * SOFTWARE.
  */
 
-package jw.fluent.api.translator.implementation;
+package generators.translator;
 
 import com.google.gson.JsonParser;
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
-import lombok.Builder;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
 import lombok.Setter;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -83,7 +82,7 @@ public class LanguagesGenerator
     private static YamlConfiguration doLanguage(String from, String to, String inputPath) throws InterruptedException, IOException {
         var fromConfig = YamlConfiguration.loadConfiguration(new File(Path.of(inputPath, from + ".yml").toString()));
         var toConfig = YamlConfiguration.loadConfiguration(new File(Path.of(inputPath, to + ".yml").toString()));
-        FluentLogger.LOGGER.log("=============== Generating language "+to+" ============================");
+        FluentLogger.LOGGER.info("=============== Generating language "+to+" ============================");
         List<Future> tasks = new ArrayList<>();
 
         //checking updated translations
@@ -137,7 +136,7 @@ public class LanguagesGenerator
         }
 
 
-        FluentLogger.LOGGER.log("waiting for requests");
+        FluentLogger.LOGGER.info("waiting for requests");
         while (true) {
             Thread.sleep(10);
             var wokring = tasks.stream().filter(e -> e.isDone() == false).toList();
@@ -146,7 +145,7 @@ public class LanguagesGenerator
             }
             break;
         }
-        FluentLogger.LOGGER.log("Done");
+        FluentLogger.LOGGER.info("Done");
 
 
 

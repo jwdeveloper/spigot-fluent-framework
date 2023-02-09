@@ -1,4 +1,4 @@
-package inventory_gui.button.observer_button.observers;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers;
 
 import jw.fluent.api.desing_patterns.observer.implementation.Observer;
 import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;

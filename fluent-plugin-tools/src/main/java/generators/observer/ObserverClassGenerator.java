@@ -1,8 +1,8 @@
-package jw.fluent.api.desing_patterns.observer.generator;
+package generators.observer;
 
-import jw.fluent.api.desing_patterns.observer.api.ObserverField;
-import jw.fluent.api.utilites.code_generator.builders.ClassCodeBuilder;
-import jw.fluent.api.utilites.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.builders.code.ClassCodeBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.observer.api.ObserverField;
 
 import java.lang.reflect.Field;
 import java.util.*;

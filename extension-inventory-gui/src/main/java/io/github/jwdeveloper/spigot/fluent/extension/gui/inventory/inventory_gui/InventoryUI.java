@@ -23,12 +23,13 @@
  *
  */
 
-package inventory_gui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui;
 
 
-import inventory_gui.button.ButtonUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.implementation.PermissionsUtility;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.PermissionType;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -278,8 +279,8 @@ public abstract class InventoryUI {
             return true;
 
         var result = switch (buttonUI.getPermissionType()) {
-            case ALL -> shouldHaveAllPermission(buttonUI.getPermissions());
-            case ONE_OF -> shouldHaveOnePermissions(buttonUI.getPermissions());
+            case PermissionType.ALL -> shouldHaveAllPermission(buttonUI.getPermissions());
+            case PermissionType.ONE_OF -> shouldHaveOnePermissions(buttonUI.getPermissions());
             default -> true;
         };
         return result;

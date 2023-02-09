@@ -34,5 +34,7 @@ public interface ContainerBuilder<Builder extends ContainerBuilder<Builder>> {
 
     Builder registerSigleton(Class<?> _interface, Object instance);
 
+    Builder registerSigleton(Class<?> _interface,  Function<Container, Object> provider);
+
     Builder registerTrasient(Class<?> _interface, Object instance);
 }

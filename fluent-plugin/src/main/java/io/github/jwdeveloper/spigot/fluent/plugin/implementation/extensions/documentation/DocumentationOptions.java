@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.documentation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.documentation;
 
 import io.github.jwdeveloper.spigot.fluent.core.documentation.api.DocumentationDecorator;
 import lombok.Data;

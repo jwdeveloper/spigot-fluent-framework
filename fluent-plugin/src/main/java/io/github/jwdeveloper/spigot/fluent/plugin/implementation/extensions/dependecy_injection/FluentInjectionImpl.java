@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.dependecy_injection;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.dependecy_injection;
 
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.Container;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.FluentContainer;

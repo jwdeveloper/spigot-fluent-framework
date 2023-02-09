@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.player_context.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation.EventBase;
 import org.bukkit.event.EventHandler;

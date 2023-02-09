@@ -1,156 +1,133 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.updater.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.updater.implementation;
 
-
-import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.updater.api.UpdaterOptions;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.versions.VersionCompare;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.FluentTaskManager;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.updater.api.FluentUpdater;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.updater.api.UpdateInfoProvider;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.updater.api.info.CheckUpdateInfo;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.updater.api.info.UpdateInfo;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
-import java.io.*;
-import java.net.HttpURLConnection;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.function.Consumer;
 
+public class SimpleUpdater implements FluentUpdater {
+    private final UpdateInfoProvider provider;
+    private final FluentTaskManager taskManager;
+    private final Plugin plugin;
+    private final SimpleLogger logger;
 
-public class SimpleUpdater {
-    private String github;
-    private String command;
-    private JavaPlugin plugin;
-    private CommandSender sender;
-    private String baseCommandName;
+    private final String commandName;
 
-    public SimpleUpdater(UpdaterOptions dto, JavaPlugin plugin, String baseCommmadName) {
-        this.github = dto.getGithub();
-        this.command = "update";
+    public SimpleUpdater(UpdateInfoProvider provider,
+                         FluentTaskManager taskManager,
+                         Plugin plugin,
+                         SimpleLogger logger,
+                         String commandName) {
+        this.provider = provider;
+        this.taskManager = taskManager;
         this.plugin = plugin;
-        this.baseCommandName = baseCommmadName;
+        this.logger = logger;
+        this.commandName = commandName;
     }
 
-
-    public void checkUpdate(Consumer<Boolean> consumer) {
-        if (github.equals(StringUtils.EMPTY))
-        {
-            FluentLogger.LOGGER.warning("Updater", "Download url could not be empty");
-            return;
-        }
-        var currentVersion = plugin.getDescription().getVersion();
-        var releaseUrl = github + "/releases/latest";
-        FluentApi.tasks().taskAsync(unused ->
+    @Override
+    public void checkUpdateAsync(Consumer<CheckUpdateInfo> consumer) {
+        taskManager.taskAsync(() ->
         {
             try {
-                var html = getHTML(releaseUrl);
-                var latestVersion = getLatestVersion(html);
-                if (latestVersion.equals(currentVersion)) {
-                    consumer.accept(false);
-                    return;
-                }
-                consumer.accept(true);
-
+                var updateInfo = checkUpdate();
+                consumer.accept(updateInfo);
             } catch (Exception e) {
-                FluentLogger.LOGGER.error("Checking for update error", e);
+                logger.error("Checking for update error", e);
             }
         });
     }
 
-    public void checkUpdate(ConsoleCommandSender commandSender) {
-        sender = commandSender;
-        checkUpdate(aBoolean ->
+    @Override
+    public void checkUpdateAsync(CommandSender commandSender)
+    {
+        checkUpdateAsync(info ->
         {
-            if (aBoolean == true) {
-                message().text("New version available, use " + ChatColor.AQUA + "/" + baseCommandName + " update" + ChatColor.RESET + " to download").send(sender);
-                message().text("Check out changes ").text(github + "/releases/latest", ChatColor.AQUA).send(sender);
-            }
-        });
-    }
-
-    public void downloadUpdate(CommandSender commandSender) {
-
-        this.sender = commandSender;
-        message().text("Checking version...").send(sender);
-        checkUpdate(aBoolean ->
-        {
-            if (aBoolean == false) {
-                message().text("Latest version is already downloaded").send(sender);
+            if (info.isUpdate()) {
+                getMessagePrefix().text("Latest version is already downloaded").send(commandSender);
                 return;
             }
-            var pluginName = plugin.getName();
-            downloadCurrentVersion(pluginName);
+            getMessagePrefix().text("New version available, use " + ChatColor.AQUA + "/" + commandName + ChatColor.RESET + " to download").send(commandSender);
+            getMessagePrefix().text("Changes:").send(commandSender);
+            commandSender.sendMessage(info.getUpdateInfo().getDescription());
         });
     }
 
-    private MessageBuilder message() {
-        var msg = FluentMessage.message().inBrackets(FluentApi.plugin().getName());
+
+    @Override
+    public CheckUpdateInfo checkUpdate() throws IOException {
+        var infoResponse = provider.getUpdateInfo();
+        if (VersionCompare.isHigher(infoResponse.getVersion(), plugin.getDescription().getVersion())) {
+            return new CheckUpdateInfo(true, infoResponse);
+        }
+        return new CheckUpdateInfo(false, infoResponse);
+    }
+
+
+    @Override
+    public void downloadUpdateAsync(CommandSender commandSender) {
+
+        checkUpdateAsync(checkUpdateInfo ->
+        {
+            if (!checkUpdateInfo.isUpdate()) {
+                getMessagePrefix().text("Latest version is already downloaded").send(commandSender);
+                return;
+            }
+            getMessagePrefix().text("Downloading latest version...")
+                    .send(commandSender);
+            if (downloadFile(checkUpdateInfo.getUpdateInfo())) {
+                return;
+            }
+            getMessagePrefix().text("New version downloaded! use ")
+                    .text("/reload", ChatColor.AQUA).color(ChatColor.GRAY)
+                    .text(" to apply changes")
+                    .send(commandSender);
+        });
+    }
+
+    private MessageBuilder getMessagePrefix() {
+        var msg = new MessageBuilder().inBrackets(plugin.getName());
         return msg.space().color(ChatColor.AQUA).inBrackets("Update info").color(ChatColor.GRAY).space();
     }
 
     private String getUpdatesFolder() {
-        return FileUtility.pluginPath(FluentApi.plugin()) + File.separator + "update" + File.separator;
+        return FileUtility.pluginPath(plugin) + File.separator + "update" + File.separator;
     }
 
-    private String getLatestVersion(String html) {
-
-        var comIndex = github.indexOf("com");
-        var repoName = github.substring(comIndex + 3);
-        var startIndex = html.indexOf("ref_page:" + repoName);
-        var endIndex = html.indexOf(";", startIndex);
-
-        var all = html.substring(startIndex, endIndex);
-        var index = all.lastIndexOf("/");
-        var latestVersion = all.substring(index + 1);
-
-        return latestVersion;
-    }
-
-    private String getHTML(String urlToRead) throws Exception {
-        var stringBuilder = new StringBuilder();
-        var url = new URL(urlToRead);
-        var conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream())))
-        {
-            var line = StringUtils.EMPTY;
-            while (true)
-            {
-                line = reader.readLine();
-                if(line == null)
-                {
-                    break;
-                }
-                stringBuilder.append(line);
-            }
-        }
-        catch (Exception e)
-        {
-            FluentLogger.LOGGER.error("Unable to get html",e);
-        }
-        return stringBuilder.toString();
-    }
-
-    private void downloadCurrentVersion(String pluginName) {
-        var output = getUpdatesFolder() + pluginName + ".jar";
-        var download = github + "/releases/latest/download/" + pluginName + ".jar";
+    private boolean downloadFile(UpdateInfo info) {
+        var output = getUpdatesFolder() + info.getFileName();
+        FileUtility.ensurePath(output);
+        var downloadUrl = info.getDownloadUrl();
         try {
-
-            message().text("Downloading latest version...")
-                    .send(sender);
-            var in = new BufferedInputStream(new URL(download).openStream());
-            var yourFile = new File(output);
-            yourFile.getParentFile().mkdirs();
-            yourFile.createNewFile(); // if path already exists will do nothing
+            var in = new BufferedInputStream(new URL(downloadUrl).openStream());
+            var file = new File(output);
+            file.createNewFile();
             var fileOutputStream = new FileOutputStream(output, false);
-            byte dataBuffer[] = new byte[1024];
-            int bytesRead;
+            var dataBuffer = new byte[1024];
+            var bytesRead = 0;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
-            message().text("New version downloaded! use ")
-                    .text("/reload", ChatColor.AQUA).color(ChatColor.GRAY)
-                    .text(" to apply changes")
-                    .send(sender);
+            fileOutputStream.close();
+            return true;
         } catch (Exception e) {
-            FluentLogger.LOGGER.error("Update download error", e);
+            logger.error("Update download error", e);
+            return false;
         }
     }
 }

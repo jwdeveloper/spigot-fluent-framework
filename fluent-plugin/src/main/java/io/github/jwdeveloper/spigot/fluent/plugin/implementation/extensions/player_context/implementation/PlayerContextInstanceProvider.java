@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.player_context.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.Container;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;

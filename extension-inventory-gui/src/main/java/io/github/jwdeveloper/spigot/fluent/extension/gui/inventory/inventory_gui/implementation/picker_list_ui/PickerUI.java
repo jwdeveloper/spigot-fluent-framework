@@ -1,4 +1,4 @@
-package inventory_gui.implementation.picker_list_ui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.picker_list_ui;
 
 import jw.fluent.api.spigot.gui.inventory_gui.events.ButtonUIEvent;
 import jw.fluent.api.spigot.gui.inventory_gui.implementation.list_ui.ListUI;

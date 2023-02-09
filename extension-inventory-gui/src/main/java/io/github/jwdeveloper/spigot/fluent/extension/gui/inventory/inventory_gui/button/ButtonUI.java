@@ -1,8 +1,8 @@
-package inventory_gui.button;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button;
 
-import inventory_gui.enums.ButtonType;
-import inventory_gui.enums.PermissionType;
-import inventory_gui.events.ButtonUIEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.ButtonType;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.PermissionType;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events.ButtonUIEvent;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

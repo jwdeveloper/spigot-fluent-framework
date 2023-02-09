@@ -1,11 +1,13 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.translator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.translator;
 
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.translator.api.models.LangData;
-import jw.fluent.api.translator.implementation.SimpleLang;
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.implementation.FluentApi;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.models.LangData;
+import io.github.jwdeveloper.spigot.fluent.core.translator.implementation.SimpleLang;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import lombok.SneakyThrows;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -13,6 +15,14 @@ import java.util.List;
 
 public class FluentTranslatorImpl implements FluentTranslator {
     private SimpleLang lang;
+    private final SimpleLogger logger;
+    private final String path;
+    public FluentTranslatorImpl(SimpleLogger logger, String path)
+    {
+        this.logger = logger;
+        this.path = path;
+    }
+
 
     @Override
     public String get(String key) {
@@ -42,13 +52,13 @@ public class FluentTranslatorImpl implements FluentTranslator {
     @Override
     @SneakyThrows
     public void generateEmptyTranlations() {
-        FluentLogger.LOGGER.log("Generating empty tranlations");
+        logger.info("Generating empty tranlations");
         var Optional = getLanguages().stream().filter(f -> f.getCountry().equals("en")).findFirst();
         var eng = Optional.get();
 
 
-        var path = FluentApi.path()+ FileUtility.separator()+"temp";
-        FileUtility.ensurePath(path);
+        var filePath = path+ FileUtility.separator()+"temp";
+        FileUtility.ensurePath(filePath);
         for(var lang : getLanguages())
         {
             if(eng.getCountry().equals(lang.getCountry()))
@@ -74,14 +84,14 @@ public class FluentTranslatorImpl implements FluentTranslator {
                 }
                 configuration.set(yamlPath, value);
             }
-            var path2 = path+ FileUtility.separator()+lang.getCountry()+".yml";
+            var path2 = filePath+ FileUtility.separator()+lang.getCountry()+".yml";
             configuration.save(path2);
         }
-        FluentLogger.LOGGER.log("Generating done");
+        logger.success("Generating done");
     }
 
     public void setLanguages(List<LangData> language, String name) {
-        lang = new SimpleLang(language);
+        lang = new SimpleLang(language, logger);
         lang.setDefaultLang("en");
         lang.setLanguage(name);
     }

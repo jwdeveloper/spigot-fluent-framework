@@ -1,32 +1,22 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.translator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.translator;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.FluentCommand;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.CommandBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.enums.ArgumentDisplay;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.api.PermissionModel;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
+import io.github.jwdeveloper.spigot.fluent.core.translator.implementation.SimpleLangLoader;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.config.FluentConfig;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.api.FluentPermissionBuilder;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.spigot.commands.FluentCommand;
-import jw.fluent.api.spigot.commands.api.builder.CommandBuilder;
-import jw.fluent.api.spigot.commands.api.enums.ArgumentDisplay;
-import jw.fluent.api.spigot.permissions.api.PermissionModel;
-import jw.fluent.api.translator.implementation.SimpleLangLoader;
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.api.FluentApiExtension;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.api.config.ConfigProperty;
-import jw.fluent.plugin.api.config.FluentConfig;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
-import jw.fluent.plugin.implementation.modules.messages.FluentMessage;
-import jw.fluent.plugin.implementation.modules.permissions.api.FluentPermissionBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.api.FluentPermissionBuilder;
 import org.bukkit.ChatColor;
 
 import java.io.File;
@@ -38,7 +28,8 @@ public class FluentTranslationExtension implements FluentApiExtension {
 
     @Override
     public void onConfiguration(FluentApiSpigotBuilder builder) {
-        fluentTranslator = new FluentTranslatorImpl();
+        //TODO pass path
+        fluentTranslator = new FluentTranslatorImpl(builder.logger(), "PATH");
         builder.container().register(FluentTranslator.class, LifeTime.SINGLETON, (x) -> fluentTranslator);
 
         var permission = createPermission(builder.permissions());
@@ -103,7 +94,7 @@ public class FluentTranslationExtension implements FluentApiExtension {
                     {
                         var languageName = commandEvent.getCommandArgs()[0];
                         if (!translator.langAvaliable(languageName)) {
-                            FluentMessage.message()
+                            new MessageBuilder()
                                     .warning()
                                     .text(" Language ", ChatColor.GRAY)
                                     .text(languageName, ChatColor.RED)
@@ -113,7 +104,7 @@ public class FluentTranslationExtension implements FluentApiExtension {
                         }
                         configFile.configFile().set(CONFIG_LANG_PATH, languageName);
                         configFile.save();
-                        FluentMessage.message()
+                        new MessageBuilder()
                                 .info()
                                 .textSecondary(" Language has been changed to ")
                                 .textPrimary(languageName)

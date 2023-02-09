@@ -1,6 +1,6 @@
-package inventory_gui.events;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events;
 
-import inventory_gui.button.ButtonUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import org.bukkit.entity.Player;
 
 public interface ButtonUIEvent

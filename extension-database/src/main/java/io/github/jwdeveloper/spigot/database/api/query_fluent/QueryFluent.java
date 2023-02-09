@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.query_fluent;
+package io.github.jwdeveloper.spigot.database.api.query_fluent;
 
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
 
 import java.util.List;
 import java.util.Optional;

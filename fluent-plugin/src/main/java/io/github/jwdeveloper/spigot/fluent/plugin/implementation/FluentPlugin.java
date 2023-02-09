@@ -1,8 +1,8 @@
-package jw.fluent.plugin.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation;
 
-import jw.fluent.api.spigot.commands.FluentCommand;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.api.FluentApiExtension;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.FluentCommand;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +17,7 @@ public abstract class FluentPlugin extends JavaPlugin implements FluentApiExtens
 
     @Override
     public final void onEnable() {
+
         var apiBuilder = FluentApiBuilder.create(this);
         apiBuilder.useExtension(this);
         var api = apiBuilder.build();
@@ -27,11 +28,6 @@ public abstract class FluentPlugin extends JavaPlugin implements FluentApiExtens
         }
         debugCommand();
     }
-
-    @Override
-    public final void onDisable() {
-    }
-
 
     public void debugCommand() {
         FluentCommand.create("disable")

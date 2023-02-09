@@ -1,4 +1,4 @@
-package jw.fluent.api.spigot.gameobjects.api;
+package io.github.jwdeveloper.spigot.extension.gameobject.api;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

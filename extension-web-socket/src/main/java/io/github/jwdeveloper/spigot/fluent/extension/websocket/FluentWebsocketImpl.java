@@ -1,9 +1,9 @@
-package io.github.jwdeveloper.spigot.websocket.extension.implementation;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
-import io.github.jwdeveloper.spigot.websocket.core.api.FluentWebsocketPacket;
-import io.github.jwdeveloper.spigot.websocket.core.implementation.WebSocketBase;
-import io.github.jwdeveloper.spigot.websocket.extension.api.FluentWebsocket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.FluentWebsocketPacket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.implementation.WebSocketBase;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.api.FluentWebsocket;
 import java.util.Collection;
 
 public class FluentWebsocketImpl extends WebSocketBase implements FluentWebsocket

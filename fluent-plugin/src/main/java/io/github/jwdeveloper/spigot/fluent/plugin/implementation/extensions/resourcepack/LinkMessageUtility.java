@@ -23,12 +23,11 @@
  *
  */
 
-package jw.fluent.api.utilites;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.resourcepack;
 
-import jw.fluent.api.spigot.messages.message.MessageBuilder;
-import jw.fluent.api.utilites.messages.Emoticons;
-import jw.fluent.plugin.api.FluentTranslations;
-import jw.fluent.plugin.implementation.FluentApi;
+import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.hover.content.Text;
@@ -41,7 +40,9 @@ public class LinkMessageUtility
     {
         var lang = FluentApi.translator();
         var resoucePack = new MessageBuilder().info().text(title);
-        var component =  new MessageBuilder().color(ChatColor.AQUA)
+        player.sendMessage("LINK MESSAGE NOT IMPLEMENTED");
+        //TODO THIS
+       /* var component =  new MessageBuilder().color(ChatColor.AQUA)
             .color(ChatColor.BOLD)
             .text(Emoticons.arrowRight)
             .space()
@@ -64,6 +65,6 @@ public class LinkMessageUtility
         resoucePack.send(player);
         player.getPlayer().sendMessage(" ");
         player.getPlayer().spigot().sendMessage(component);
-        player.getPlayer().spigot().sendMessage(component2);
+        player.getPlayer().spigot().sendMessage(component2);*/
     }
 }

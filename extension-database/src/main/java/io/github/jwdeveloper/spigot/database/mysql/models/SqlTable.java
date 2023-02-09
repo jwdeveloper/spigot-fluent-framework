@@ -1,5 +1,12 @@
-package jw.fluent.api.database.mysql.models;
+package io.github.jwdeveloper.spigot.database.mysql.models;
 
+import io.github.jwdeveloper.spigot.database.api.database_table.DbTable;
+import io.github.jwdeveloper.spigot.database.api.database_table.models.TableModel;
+import io.github.jwdeveloper.spigot.database.api.query_fluent.select.SelectFluentBridge;
+import io.github.jwdeveloper.spigot.database.mysql.change_tacker.SqlChangeTracker;
+import io.github.jwdeveloper.spigot.database.mysql.factories.SqlTableModelFactory;
+import io.github.jwdeveloper.spigot.database.mysql.factories.SqlTableQueryFactory;
+import io.github.jwdeveloper.spigot.database.mysql.query_fluent.SqlSelect;
 import jw.fluent.api.database.api.database_table.DbTable;
 import jw.fluent.api.database.api.database_table.models.TableModel;
 import jw.fluent.api.database.api.query_fluent.select.SelectFluentBridge;

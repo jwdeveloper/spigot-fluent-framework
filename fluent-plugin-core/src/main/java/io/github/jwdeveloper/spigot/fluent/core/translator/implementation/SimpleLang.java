@@ -1,7 +1,7 @@
-package jw.fluent.api.translator.implementation;
+package io.github.jwdeveloper.spigot.fluent.core.translator.implementation;
 
-import jw.fluent.api.translator.api.models.LangData;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.models.LangData;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 
@@ -16,9 +16,12 @@ public class SimpleLang {
     private LangData currentLang;
     private LangData defaultLang;
 
-    public SimpleLang(List<LangData> languages)
+    private final SimpleLogger logger;
+
+    public SimpleLang(List<LangData> languages, SimpleLogger logger)
     {
         this.languages = languages;
+        this.logger = logger;
     }
 
     public String get(String key) {
@@ -35,7 +38,7 @@ public class SimpleLang {
             return defaultLang.getTranslations().get(key);
         }
 
-        FluentLogger.LOGGER.warning(NOT_FOUND+": "+key);
+        logger.warning(NOT_FOUND+": "+key);
         return NOT_FOUND;
     }
 
@@ -50,7 +53,7 @@ public class SimpleLang {
                 return true;
             }
         }
-        FluentLogger.LOGGER.warning("Language not found: "+name);
+        logger.warning("Language not found: "+name);
         return false;
     }
 
@@ -69,7 +72,7 @@ public class SimpleLang {
                 return true;
             }
         }
-        FluentLogger.LOGGER.warning("Language not found: "+name);
+        logger.warning("Language not found: "+name);
         return false;
     }
 

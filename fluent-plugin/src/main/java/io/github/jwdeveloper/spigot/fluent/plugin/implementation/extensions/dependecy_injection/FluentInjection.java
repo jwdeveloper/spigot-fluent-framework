@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.dependecy_injection;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.dependecy_injection;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;

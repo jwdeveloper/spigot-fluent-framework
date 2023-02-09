@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.models;
+package io.github.jwdeveloper.spigot.database.mysql.models;
 
 import jw.fluent.api.database.api.database_table.DbEntry;
 import jw.fluent.api.database.api.database_table.enums.EntryState;

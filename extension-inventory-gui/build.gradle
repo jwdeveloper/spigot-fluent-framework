@@ -1,0 +1,14 @@
+jar {
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation project(':fluent-plugin')
+    implementation project(':fluent-plugin-core')
+}
+//apply plugin: 'test-plugin'

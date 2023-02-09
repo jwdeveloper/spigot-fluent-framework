@@ -23,10 +23,10 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.implementation;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
-import io.github.jwdeveloper.spigot.websocket.core.api.resolver.TypeResolver;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.resolver.TypeResolver;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

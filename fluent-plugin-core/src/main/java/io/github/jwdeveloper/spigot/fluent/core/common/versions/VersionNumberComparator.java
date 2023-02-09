@@ -1,12 +1,12 @@
-package jw.fluent.plugin.implementation.config.migrations;
+package io.github.jwdeveloper.spigot.fluent.core.common.versions;
 
 
 import java.util.Comparator;
 
 public class VersionNumberComparator {
 
-    public static VersionNumberComparator.AlphaDecimalComparator<String> getInstance() {
-        return new VersionNumberComparator.AlphaDecimalComparator<>(Comparator.comparing(CharSequence::toString, Comparator.naturalOrder()), false);
+    public static AlphaDecimalComparator<String> getInstance() {
+        return new AlphaDecimalComparator<>(Comparator.comparing(CharSequence::toString, Comparator.naturalOrder()), false);
     }
 
     public static class AlphaDecimalComparator<T extends CharSequence> implements Comparator<T> {

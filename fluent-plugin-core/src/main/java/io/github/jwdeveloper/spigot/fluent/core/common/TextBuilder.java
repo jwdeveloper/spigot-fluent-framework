@@ -10,7 +10,7 @@ public class TextBuilder<SELF extends TextBuilder<SELF>> {
     public SELF text(Object... texts) {
         for (var text : texts) {
             var value = text == null ? "NULL" : text.toString();
-            text(value).newLine();
+            text(value).space();
         }
         return self();
     }
@@ -36,6 +36,11 @@ public class TextBuilder<SELF extends TextBuilder<SELF>> {
     public SELF textNewLine(String text) {
         return text(text).newLine();
     }
+
+    public SELF textFormat(String pattern, Object... args) {
+        return text(String.format(pattern, args));
+    }
+
 
     public SELF newLine() {
         builder.append(System.lineSeparator());

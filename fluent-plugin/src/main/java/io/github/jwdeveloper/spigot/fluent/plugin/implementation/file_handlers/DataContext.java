@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.file_handlers;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.file_handlers;
 
 import io.github.jwdeveloper.spigot.fluent.core.repository.api.CustomFile;
 

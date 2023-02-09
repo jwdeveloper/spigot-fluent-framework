@@ -1,4 +1,4 @@
-package injector.generator;
+package generators.injector_container;
 
 import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
 import jw.fluent.api.desing_patterns.dependecy_injection.api.models.RegistrationInfo;

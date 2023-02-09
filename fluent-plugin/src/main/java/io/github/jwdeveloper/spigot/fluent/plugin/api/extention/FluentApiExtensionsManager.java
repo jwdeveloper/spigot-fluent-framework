@@ -1,20 +1,19 @@
-package jw.fluent.plugin.api.extention;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.extention;
 
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.plugin.api.FluentApiExtension;
+
+import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
 
 public interface FluentApiExtensionsManager {
     void register(FluentApiExtension extension);
 
-    void register(FluentApiExtension extention, ExtentionPiority piority);
+    void register(FluentApiExtension extension, ExtentionPiority priority);
 
-    void registerLow(FluentApiExtension extention);
+    void registerLow(FluentApiExtension extension);
 
     void onEnable(FluentApiSpigot fluentAPI);
 
     void onDisable(FluentApiSpigot fluentAPI);
 
     void onConfiguration(FluentApiSpigotBuilder builder);
-
 }

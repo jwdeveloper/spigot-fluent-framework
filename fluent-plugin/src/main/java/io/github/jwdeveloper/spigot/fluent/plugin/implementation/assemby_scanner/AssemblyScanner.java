@@ -1,10 +1,10 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.assembly_scanner;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.assemby_scanner;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.java.ClassTypeUtility;
-import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.assembly_scanner.FluentAssemblyScanner;
 import lombok.Getter;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 
-public class AssemblyScanner implements FluentAssemblyScanner {
+public class AssemblyScanner extends ClassLoader implements FluentAssemblyScanner  {
 
 
     @Getter
@@ -26,9 +26,12 @@ public class AssemblyScanner implements FluentAssemblyScanner {
 
     private final Map<Package, List<Class<?>>> byPackageCatch;
 
+    private final Map<Class<? extends Annotation>, List<Class<?>>> byAnnotationCatch;
+
     private final SimpleLogger logger;
 
-    public AssemblyScanner(JavaPlugin plugin, SimpleLogger logger) {
+    public AssemblyScanner(Plugin plugin, SimpleLogger logger) {
+        //TODO check if PLUGIN will works instead of JAVAPLUGIN
         this(plugin.getClass(), logger);
     }
 
@@ -42,7 +45,7 @@ public class AssemblyScanner implements FluentAssemblyScanner {
     }
 
 
-    private static List<Class<?>> loadPluginClasses(final Class<?> clazz) {
+    private List<Class<?>> loadPluginClasses(final Class<?> clazz) {
         final var source = clazz.getProtectionDomain().getCodeSource();
         if (source == null) return Collections.emptyList();
         final var url = source.getLocation();
@@ -58,17 +61,16 @@ public class AssemblyScanner implements FluentAssemblyScanner {
                 try {
                     classes.add(Class.forName(name, false, clazz.getClassLoader()));
                 } catch (NoClassDefFoundError | ClassNotFoundException e) {
-                    log.warning("Unable to load class:" + name);
+                    logger.warning("Unable to load class:" + name);
                 }
             }
             return classes;
         } catch (IOException e) {
-            FluentLogger.LOGGER.error("Unable to open classes loader for: " + clazz.getName(), e);
+            logger.error("Unable to open classes loader for: " + clazz.getName(), e);
             return Collections.emptyList();
         }
     }
 
-    private final Map<Class<? extends Annotation>, List<Class<?>>> byAnnotationCatch;
 
     public Collection<Class<?>> findByAnnotation(Class<? extends Annotation> annotation) {
         if (byAnnotationCatch.containsKey(annotation)) {

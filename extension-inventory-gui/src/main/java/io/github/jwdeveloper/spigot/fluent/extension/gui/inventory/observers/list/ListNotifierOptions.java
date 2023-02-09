@@ -1,7 +1,7 @@
-package fluent_ui.observers.list;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list;
 
-import jw.fluent.api.spigot.gui.fluent_ui.observers.NotifierOptions;
-import jw.fluent.api.spigot.gui.fluent_ui.observers.events.onSelectEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.NotifierOptions;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.events.onSelectEvent;
 import lombok.Setter;
 
 import java.util.function.Consumer;

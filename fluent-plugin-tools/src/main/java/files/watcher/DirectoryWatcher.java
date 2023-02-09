@@ -1,7 +1,8 @@
-package jw.fluent.api.files.implementation.watcher;
+package files.watcher;
 
 
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,8 +1,9 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.file_handlers;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.file_handlers;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.java.ObjectUtility;
 import io.github.jwdeveloper.spigot.fluent.core.files.yaml.api.YamlReader;
 import io.github.jwdeveloper.spigot.fluent.core.files.yaml.implementation.SimpleYamlReader;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -21,13 +22,14 @@ public class ConfigFileHandler implements FileHandler {
     }
 
     public void load() throws IllegalAccessException, InstantiationException, IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException {
-        var pluginConfig =  (YamlConfiguration) FluentApi.plugin().getConfig();
+        //TODO this
+       /* var pluginConfig =  (YamlConfiguration) FluentApi.plugin().getConfig();
         for (var configSection: configSections)
         {
             var result = reader.fromConfiguration(pluginConfig,configSection.getClass());
             ObjectUtility.copyToObject(result, configSection, result.getClass());
         }
-        pluginConfig.save(FluentApi.path()+ File.separator+"config.yml");
+        pluginConfig.save(FluentApi.path()+ File.separator+"config.yml");*/
     }
 
 

@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder.select_builder;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder.select_builder;
 
 import jw.fluent.api.database.api.query_builder.bridge_builder.BridgeBuilder;
 import jw.fluent.api.database.api.query_builder.select_builder.SelectBuilder;

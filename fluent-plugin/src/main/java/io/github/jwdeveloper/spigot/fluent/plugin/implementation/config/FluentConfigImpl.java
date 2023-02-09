@@ -1,18 +1,26 @@
-package jw.fluent.plugin.implementation.config;
-import jw.fluent.api.files.implementation.yaml_reader.implementation.SimpleYamlModelFactory;
-import jw.fluent.api.files.implementation.yaml_reader.implementation.SimpleYamlModelMapper;
-import jw.fluent.plugin.api.config.ConfigProperty;
-import jw.fluent.plugin.api.config.ConfigSection;
-import jw.fluent.plugin.api.config.FluentConfig;
-import jw.fluent.plugin.implementation.modules.messages.FluentMessage;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.config;
+
+import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.implementation.SimpleYamlModelFactory;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.implementation.SimpleYamlModelMapper;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.FluentConfig;
+import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public record FluentConfigImpl(FileConfiguration fileConfiguration,
-                               String path,
-                               boolean updated,
-                               boolean created) implements FluentConfig {
+@Getter
+public class FluentConfigImpl implements FluentConfig {
+
+    private final FileConfiguration fileConfiguration;
+    private final String path;
+
+    public FluentConfigImpl(FileConfiguration fileConfiguration, String path, boolean updated, boolean created) {
+        this.fileConfiguration = fileConfiguration;
+        this.path = path;
+    }
 
     public <T> T get(String name) {
         return (T) fileConfiguration.get(name);
@@ -76,7 +84,7 @@ public record FluentConfigImpl(FileConfiguration fileConfiguration,
             fileConfiguration.set(path,defaultValue);
         }
 
-        var builder = FluentMessage.message();
+        var builder = new TextBuilder();
         builder.text(fileConfiguration.options().header());
         builder.newLine();
         builder.text(path);

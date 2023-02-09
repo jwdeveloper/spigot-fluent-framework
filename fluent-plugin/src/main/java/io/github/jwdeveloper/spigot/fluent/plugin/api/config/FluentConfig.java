@@ -1,6 +1,5 @@
-package jw.fluent.plugin.api.config;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.config;
 
-import jw.fluent.plugin.api.config.ConfigProperty;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public interface FluentConfig {
@@ -19,8 +18,4 @@ public interface FluentConfig {
     void save(Object object);
 
     FileConfiguration configFile();
-
-    boolean created();
-
-    boolean updated();
 }

@@ -1,5 +1,5 @@
-package jw.fluent.api.database.api;
-import jw.fluent.api.database.api.database_table.DbTable;
+package io.github.jwdeveloper.spigot.database.api;
+import io.github.jwdeveloper.spigot.database.api.database_table.DbTable;
 
 import java.sql.Connection;
 import java.sql.SQLException;

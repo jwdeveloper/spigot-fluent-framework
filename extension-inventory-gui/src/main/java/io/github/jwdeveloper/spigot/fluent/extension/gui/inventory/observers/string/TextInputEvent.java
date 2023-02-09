@@ -1,4 +1,4 @@
-package fluent_ui.observers.string;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.string;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

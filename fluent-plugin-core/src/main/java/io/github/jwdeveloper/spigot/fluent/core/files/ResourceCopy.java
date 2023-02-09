@@ -16,9 +16,6 @@ public class ResourceCopy
 {
     private static final String JAR_URI_PREFIX = "jar:path:";
 
-    /**
-     * The default buffer size.
-     */
     private static final int BUFFER_SIZE = 8 * 1024;
 
 

@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.query_builder.insert_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.insert_builder;
 
 public interface InsertBuilderColumn
 {

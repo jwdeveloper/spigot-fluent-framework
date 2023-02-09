@@ -1,6 +1,7 @@
 package io.github.jwdeveloper.spigot.fluent.core.common.logger;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 import java.util.logging.Level;
@@ -25,7 +26,8 @@ public class SimpleLogger {
                 .text(getPrefix("Info", ChatColor.AQUA))
                 .text(messages)
                 .toString();
-        logger.info(message);
+     //   logger.info(message);
+        send(message);
     }
 
     public void success(Object... messages) {
@@ -33,7 +35,8 @@ public class SimpleLogger {
                 .text(getPrefix("Success", ChatColor.GREEN))
                 .text(messages)
                 .toString();
-        logger.log(Level.FINEST, message);
+       // logger.log(Level.FINEST, message);
+        send(message);
     }
 
     public void warning(Object... messages) {
@@ -41,7 +44,7 @@ public class SimpleLogger {
                 .text(getPrefix("Warning", ChatColor.YELLOW))
                 .text(messages)
                 .toString();
-        logger.warning(message);
+        send(message);
     }
 
     public void error(String message) {
@@ -49,7 +52,8 @@ public class SimpleLogger {
                 .text(getPrefix("Error", ChatColor.RED))
                 .text(message)
                 .toString();
-        logger.log(Level.WARNING, message);
+       // logger.log(Level.WARNING, message);
+        send(msg);
     }
 
     public void error(String message, Throwable throwable) {
@@ -58,9 +62,20 @@ public class SimpleLogger {
         var errorMessage = getBuilder()
                 .text(description, errorBar, stackTrace, errorBar)
                 .toString();
-        logger.log(Level.WARNING, errorMessage);
+      //  logger.log(Level.WARNING, errorMessage);
+        send(errorMessage);
     }
 
+
+    private void send(String message)
+    {
+        if(Bukkit.getConsoleSender() != null)
+        {
+            Bukkit.getConsoleSender().sendMessage(message);
+            return;
+        }
+        System.out.println(message);
+    }
 
     private TextBuilder getErrorDescription(String message, Throwable exception) {
         var stackTrace = new TextBuilder();

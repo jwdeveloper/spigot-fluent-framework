@@ -1,6 +1,6 @@
-package io.github.jwdeveloper.spigot.websocket.extension.api;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.api;
 
-import io.github.jwdeveloper.spigot.websocket.core.api.FluentWebsocketPacket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.FluentWebsocketPacket;
 
 import java.util.Collection;
 

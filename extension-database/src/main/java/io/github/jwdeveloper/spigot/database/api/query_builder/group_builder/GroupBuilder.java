@@ -1,8 +1,8 @@
-package jw.fluent.api.database.api.query_builder.group_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.group_builder;
 
-import jw.fluent.api.database.api.query_builder.order_builder.OrderBuilder;
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
-import jw.fluent.api.database.api.query_builder.where_builders.WhereBuilder;
+import io.github.jwdeveloper.spigot.database.api.query_builder.order_builder.OrderBuilder;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_builder.where_builders.WhereBuilder;
 
 public interface GroupBuilder extends AbstractQuery
 {

@@ -1,13 +1,11 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.player_context.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.implementation;
 
-import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.Container;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.FluentContainer;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.models.RegistrationInfo;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.player_context.api.FluentPlayer;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.player_context.implementation.PlayerContainerBuilderImpl;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.api.FluentPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.List;
@@ -19,7 +17,6 @@ public class FluentPlayerContext {
     private final FluentContainer mainContainer;
     private final List<RegistrationInfo> registrationInfos;
     private final FluentPlayerContextListener listener;
-
     private final SimpleLogger logger;
 
     public FluentPlayerContext(FluentContainer mainContainer,
@@ -57,7 +54,7 @@ public class FluentPlayerContext {
     }
 
     private Container CreateContainer(UUID uuid) throws Exception {
-        return new PlayerContainerBuilderImpl()
+        return new PlayerContainerBuilderImpl(logger)
                 .setParentContainer(mainContainer)
                 .configure(containerConfiguration ->
                 {

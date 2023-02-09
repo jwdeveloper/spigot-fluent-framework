@@ -1,7 +1,7 @@
-package fluent_ui.observers;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers;
 
-import inventory_gui.button.observer_button.observers.ButtonNotifier;
-import inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
 import lombok.Getter;
 
 import java.util.List;

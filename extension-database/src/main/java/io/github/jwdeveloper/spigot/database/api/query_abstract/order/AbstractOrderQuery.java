@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.query_abstract.order;
+package io.github.jwdeveloper.spigot.database.api.query_abstract.order;
 
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
 
 public interface AbstractOrderQuery<T> extends AbstractQuery
 {

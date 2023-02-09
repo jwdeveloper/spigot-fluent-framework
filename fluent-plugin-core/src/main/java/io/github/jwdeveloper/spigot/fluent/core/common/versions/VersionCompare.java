@@ -1,4 +1,4 @@
-package jw.fluent.plugin.implementation.config.migrations;
+package io.github.jwdeveloper.spigot.fluent.core.common.versions;
 
 import java.util.regex.Pattern;
 

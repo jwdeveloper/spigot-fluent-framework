@@ -1,7 +1,7 @@
-package jw.fluent.api.spigot.gameobjects.implementation;
+package io.github.jwdeveloper.spigot.extension.gameobject.implementation;
 
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Color;

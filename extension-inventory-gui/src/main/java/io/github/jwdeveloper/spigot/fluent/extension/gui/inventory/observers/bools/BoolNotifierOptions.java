@@ -1,6 +1,6 @@
-package fluent_ui.observers.bools;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.bools;
 
-import fluent_ui.observers.NotifierOptions;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.NotifierOptions;
 import lombok.Setter;
 import org.bukkit.Material;
 

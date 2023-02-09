@@ -1,7 +1,7 @@
-package jw.fluent.api.files.implementation.watcher;
+package files.watcher;
 
 
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 
 import java.io.File;
 import java.nio.file.*;
@@ -51,7 +51,7 @@ public class FileWatcher extends Thread {
                     if (kind == StandardWatchEventKinds.OVERFLOW) {
                         Thread.yield();
                         continue;
-                    } else if (kind == java.nio.file.StandardWatchEventKinds.ENTRY_MODIFY
+                    } else if (kind == StandardWatchEventKinds.ENTRY_MODIFY
                             && filename.toString().equals(file.getName())) {
                         for(var e : onFileChangedEvents)
                         {

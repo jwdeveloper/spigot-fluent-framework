@@ -1,4 +1,4 @@
-package fluent_ui.styles;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles;
 
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
 import org.bukkit.ChatColor;

@@ -1,11 +1,9 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.api.PermissionModel;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.api.FluentPermissionBuilder;
-import jw.fluent.api.spigot.permissions.api.PermissionModel;
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.implementation.modules.permissions.api.FluentPermissionBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.api.FluentPermissionBuilder;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -13,14 +11,12 @@ import java.util.List;
 
 public class FluentPermissionBuilderImpl implements FluentPermissionBuilder {
 
-
     private final List<PermissionModel> models;
-    private final JavaPlugin javaPlugin;
-
+    private final Plugin javaPlugin;
     private final DefaultPermissions defaultPermissionBuilder;
     private String basePermission;
 
-    public FluentPermissionBuilderImpl(JavaPlugin javaPlugin)
+    public FluentPermissionBuilderImpl(Plugin javaPlugin)
     {
         models = new ArrayList<>();
         this.javaPlugin = javaPlugin;

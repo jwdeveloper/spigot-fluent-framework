@@ -1,4 +1,4 @@
-package jw.fluent.api.translator.api.models;
+package io.github.jwdeveloper.spigot.fluent.core.translator.api.models;
 
 public class LangOptions
 {

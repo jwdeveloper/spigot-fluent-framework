@@ -23,18 +23,18 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.implementation;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.implementation;
 
 
 import com.google.gson.Gson;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import io.github.jwdeveloper.spigot.fluent.core.files.json.JsonUtility;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.TaskManager;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.FluentTaskManager;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.implementation.SimpleTaskTimer;
-import io.github.jwdeveloper.spigot.websocket.core.api.FluentWebsocketPacket;
-import io.github.jwdeveloper.spigot.websocket.core.api.annotations.PacketProperty;
-import io.github.jwdeveloper.spigot.websocket.core.api.resolver.*;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.FluentWebsocketPacket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.annotations.PacketProperty;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.resolver.*;
 import org.java_websocket.WebSocket;
 
 import java.lang.reflect.Field;
@@ -57,7 +57,7 @@ public abstract class WebSocketPacket implements FluentWebsocketPacket {
 
     public abstract int getPacketId();
 
-    public WebSocketPacket(TaskManager manager) {
+    public WebSocketPacket(FluentTaskManager manager) {
         gson = JsonUtility.getGson();
         packetFields = loadPacketFields();
         packetSize = getPacketSize();

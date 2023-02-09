@@ -1,25 +1,24 @@
-package jw.fluent.api.database.mysql.models;
-import jw.fluent.api.database.api.conncetion.DbConnectionDto;
+package io.github.jwdeveloper.spigot.database.mysql.models;
+
+import io.github.jwdeveloper.spigot.database.api.conncetion.DbConnectionDto;
 import lombok.Data;
 
 @Data
-public class SqlConnection implements DbConnectionDto
-{
+public class SqlConnection implements DbConnectionDto {
     private String server;
 
     private String database;
 
-    private boolean autoReconnect=true;
+    private boolean autoReconnect = true;
 
-    private boolean useSll =true;
+    private boolean useSll = true;
 
     private String user;
 
     private String password;
 
-    public String getConnectionString()
-    {
-       return new StringBuilder()
+    public String getConnectionString() {
+        return new StringBuilder()
                 .append("jdbc:mysql://")
                 .append(server)
                 .append("/")

@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.mediator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.mediator;
 
 public interface FluentMediator
 {

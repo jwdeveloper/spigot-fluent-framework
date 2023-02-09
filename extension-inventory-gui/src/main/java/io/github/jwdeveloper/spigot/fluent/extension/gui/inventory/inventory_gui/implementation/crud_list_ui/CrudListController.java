@@ -1,4 +1,4 @@
-package inventory_gui.implementation.crud_list_ui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.crud_list_ui;
 
 import jw.fluent.api.desing_patterns.observer.implementation.Observer;
 import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;

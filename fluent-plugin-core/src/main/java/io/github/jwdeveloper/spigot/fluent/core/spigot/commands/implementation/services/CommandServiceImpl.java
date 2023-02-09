@@ -14,11 +14,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class CommandServiceImpl implements CommandService {
+
+    private Plugin plugin;
 
     @Override
     public boolean hasSenderAccess(CommandSender commandSender, List<AccessType> commandAccessType) {

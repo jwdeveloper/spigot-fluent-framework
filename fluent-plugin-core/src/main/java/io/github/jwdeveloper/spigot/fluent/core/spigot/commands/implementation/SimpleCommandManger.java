@@ -3,8 +3,8 @@ package io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.java.ObjectUtility;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.CommandManger;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.events.EventBase;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.FluentCommandManger;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation.EventBase;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-public class SimpleCommandManger extends EventBase implements CommandManger {
+public class SimpleCommandManger extends EventBase implements FluentCommandManger {
     private final HashMap<String, SimpleCommand> commands;
 
     public SimpleCommandManger(Plugin plugin) {

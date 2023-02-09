@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.decorator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.decorator;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;

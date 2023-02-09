@@ -1,7 +1,7 @@
-package jw.fluent.api.translator.implementation;
+package generators.translator;
 
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.spigot.messages.message.MessageBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -19,7 +19,7 @@ public class TranslationClassGenerator {
         var file = new File(filePath);
         var configuration = YamlConfiguration.loadConfiguration(new File(input));
 
-        var builder = new MessageBuilder();
+        var builder = new TextBuilder();
 
 
         var packageName = output.replace("\\", ".");
@@ -36,7 +36,7 @@ public class TranslationClassGenerator {
     }
 
 
-    private static void addClass(MessageBuilder builder, ConfigurationSection root, int offset, String name, boolean isRoot) {
+    private static void addClass(TextBuilder builder, ConfigurationSection root, int offset, String name, boolean isRoot) {
         if (!isRoot) {
             name = name.toUpperCase();
             name = name.replace('-', '_');
@@ -66,7 +66,7 @@ public class TranslationClassGenerator {
         builder.newLine();
     }
 
-    private static void addProperty(MessageBuilder builder, String name, String properyPath,String value, int offset) {
+    private static void addProperty(TextBuilder builder, String name, String properyPath,String value, int offset) {
         name = name.toUpperCase();
         name = name.replace('-', '_');
         builder.newLine();

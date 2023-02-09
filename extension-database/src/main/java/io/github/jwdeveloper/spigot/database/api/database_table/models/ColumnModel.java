@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.database_table.models;
+package io.github.jwdeveloper.spigot.database.api.database_table.models;
 
-import jw.fluent.api.database.api.database_table.enums.ReferenceOption;
+import io.github.jwdeveloper.spigot.database.api.database_table.models.enums.ReferenceOption;
 import lombok.Data;
 
 import java.lang.reflect.Field;

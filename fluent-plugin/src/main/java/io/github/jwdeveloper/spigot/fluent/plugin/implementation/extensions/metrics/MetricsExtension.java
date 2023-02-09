@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.metrics;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.metrics;
 
 import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;

@@ -1,14 +1,15 @@
-package jw.fluent.plugin.implementation.config;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.config;
 
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.files.implementation.yaml_reader.api.YamlReader;
-import jw.fluent.api.files.implementation.yaml_reader.implementation.SimpleYamlReader;
-import jw.fluent.api.utilites.java.StringUtils;
-import jw.fluent.plugin.api.config.ConfigSection;
-import jw.fluent.plugin.implementation.assembly_scanner.AssemblyScanner;
-import jw.fluent.plugin.implementation.config.migrations.FluentConfigMigrator;
-import jw.fluent.plugin.implementation.config.sections.DefaultConfigSection;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.api.YamlReader;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.implementation.SimpleYamlReader;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigSection;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.assemby_scanner.AssemblyScanner;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.config.migrations.FluentConfigMigrator;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.config.sections.DefaultConfigSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -21,16 +22,17 @@ public class FluentConfigLoader {
     private final FluentConfigMigrator migrator;
     private final YamlReader yamlMapper;
     private final AssemblyScanner assemblyScanner;
-
-    public FluentConfigLoader(AssemblyScanner assemblyScanner, FluentConfigMigrator migrator) {
+    private final Plugin plugin;
+    public FluentConfigLoader(Plugin plugin, AssemblyScanner assemblyScanner, FluentConfigMigrator migrator) {
         yamlMapper = new SimpleYamlReader();
         this.assemblyScanner = assemblyScanner;
         this.migrator = migrator;
+        this.plugin = plugin;
     }
 
-    public static FluentConfigImpl loadConfig(JavaPlugin javaPlugin, AssemblyScanner assemblyScanner) throws Exception {
-        var loader = new FluentConfigLoader(assemblyScanner, new FluentConfigMigrator(assemblyScanner, javaPlugin));
-        var path = FileUtility.pluginPath(javaPlugin) + File.separator + "config.yml";
+    public static FluentConfigImpl loadConfig(Plugin plugin,  AssemblyScanner assemblyScanner) throws Exception {
+        var loader = new FluentConfigLoader(plugin, assemblyScanner, new FluentConfigMigrator(assemblyScanner, plugin));
+        var path = FileUtility.pluginPath(plugin) + File.separator + "config.yml";
         return loader.load(path);
     }
 
@@ -65,7 +67,7 @@ public class FluentConfigLoader {
 
         if (!FileUtility.pathExists(path)) {
             var yamlConfig = new YamlConfiguration();
-            yamlMapper.toConfiguration(new DefaultConfigSection(), yamlConfig);
+            yamlMapper.toConfiguration(new DefaultConfigSection(plugin), yamlConfig);
             yamlConfig.save(path);
             return yamlConfig;
         }

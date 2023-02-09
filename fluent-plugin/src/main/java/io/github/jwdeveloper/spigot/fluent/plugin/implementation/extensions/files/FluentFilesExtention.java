@@ -1,31 +1,23 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.files;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.files;
 
-import jw.fluent.api.desing_patterns.dependecy_injection.api.containers.FluentContainer;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
-import jw.fluent.api.files.api.CustomFile;
-import jw.fluent.api.files.api.annotation.files.JsonFile;
-import jw.fluent.api.files.implementation.FilesDataContext;
-import jw.fluent.api.files.implementation.SimpleFileBuilderImpl;
-import jw.fluent.api.spigot.tasks.SimpleTaskTimer;
-import jw.fluent.plugin.api.FluentApiExtension;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.api.config.ConfigProperty;
-import jw.fluent.plugin.api.config.ConfigSection;
-import jw.fluent.plugin.api.config.FluentConfig;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
-import jw.fluent.plugin.implementation.modules.tasks.FluentTasks;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.FluentContainer;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
+import io.github.jwdeveloper.spigot.fluent.core.repository.api.CustomFile;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.FluentTaskManager;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.implementation.SimpleTaskTimer;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigSection;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.FluentConfig;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.file_handlers.FilesDataContext;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.file_handlers.JsonFile;
 
 public class FluentFilesExtention implements FluentApiExtension {
 
-    private final SimpleFileBuilderImpl builder;
     private SimpleTaskTimer savingTask;
     private FilesDataContext filesDataContext;
-
-    public FluentFilesExtention(SimpleFileBuilderImpl builder)
-    {
-        this.builder =builder;
-    }
 
 
     @Override
@@ -33,11 +25,12 @@ public class FluentFilesExtention implements FluentApiExtension {
     {
         fluentApiBuilder.container().register(FluentFiles.class, LifeTime.SINGLETON,(x) ->
         {
-            filesDataContext = builder.build();
+            //TODO pass path
+            filesDataContext = new FluentFilesImpl("PATH");
             var searchContainer = (FluentContainer)x;
 
-            var logger = (FluentLogger)searchContainer.find(FluentLogger.class);
             var config = (FluentConfig)searchContainer.find(FluentConfig.class);
+            var tasks = (FluentTaskManager)searchContainer.find(FluentTaskManager.class);
 
             var customFiles = searchContainer.findAllByInterface(CustomFile.class);
             var jsonFiles =  searchContainer.findAllByAnnotation(JsonFile.class);
@@ -54,8 +47,8 @@ public class FluentFilesExtention implements FluentApiExtension {
             {
                 filesDataContext.addConfigFileObject(file);
             }
-            var savingFrequency = getConfigSavingFrequency(config, logger);
-            savingTask = FluentTasks.taskTimer(20*savingFrequency*60,(iteration, task) ->
+            var savingFrequency = getConfigSavingFrequency(config);
+            savingTask = tasks.taskTimer(20*savingFrequency*60,(iteration, task) ->
             {
                 filesDataContext.save();
             });
@@ -83,7 +76,7 @@ public class FluentFilesExtention implements FluentApiExtension {
         savingTask.cancel();
     }
 
-    private int getConfigSavingFrequency(FluentConfig configFile, FluentLogger logger)
+    private int getConfigSavingFrequency(FluentConfig configFile)
     {
         var property = createSavingPropertyConfig();
         var propertyValue =  configFile.getOrCreate(property);

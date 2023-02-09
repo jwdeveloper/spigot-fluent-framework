@@ -1,11 +1,10 @@
-package inventory_gui.button.observer_button;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button;
 
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUIBuilder;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonNotifier;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserver;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
-
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUIBuilder;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserver;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
 import java.util.function.Supplier;
 
 

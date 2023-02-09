@@ -1,8 +1,8 @@
-package jw.fluent.api.database.api.query_builder.update_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.update_builder;
 
-import jw.fluent.api.database.api.query_builder.where_builders.WhereBuilder;
-import jw.fluent.api.database.api.query_builder.where_builders.WhereBuilderBridge;
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_builder.where_builders.WhereBuilder;
+import io.github.jwdeveloper.spigot.database.api.query_builder.where_builders.WhereBuilderBridge;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
 
 import java.util.HashMap;
 

@@ -1,6 +1,6 @@
 package io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.builder;
 
-import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.CommandManger;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.FluentCommandManger;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.BuilderConfig;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.CommandBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.config.ArgumentConfig;
@@ -19,7 +19,6 @@ import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.b
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.services.CommandServiceImpl;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.services.EventsServiceImpl;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.services.MessageServiceImpl;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,10 +34,10 @@ public class CommandBuilderImpl implements CommandBuilder {
 
     protected final CommandModel model;
     private final Map<Consumer, BuilderConfig> configs;
-    private final Plugin plugin;
-    private final CommandManger manger;
+    private final FluentCommandManger manger;
 
-    public CommandBuilderImpl(String commandName, Plugin plugin, CommandManger manger) {
+    public CommandBuilderImpl(String commandName,
+                              FluentCommandManger manger) {
         configs = new HashMap<>();
         eventsService = new EventsServiceImpl();
         commandService = new CommandServiceImpl();
@@ -46,7 +45,6 @@ public class CommandBuilderImpl implements CommandBuilder {
         subCommands = new ArrayList<>();
         model = new CommandModel();
         model.setName(commandName);
-        this.plugin = plugin;
         this.manger = manger;
     }
 
@@ -71,7 +69,7 @@ public class CommandBuilderImpl implements CommandBuilder {
 
     @Override
     public CommandBuilder subCommandsConfig(Consumer<SubCommandConfig> config) {
-        configs.put(config, new SubCommandConfigImpl(subCommands, plugin, manger));
+        configs.put(config, new SubCommandConfigImpl(subCommands, manger));
         return this;
     }
 
@@ -85,13 +83,12 @@ public class CommandBuilderImpl implements CommandBuilder {
                 subCommands,
                 commandService,
                 messagesService,
-                eventsService,
-                manger);
+                eventsService);
     }
 
     public SimpleCommand buildAndRegister() {
         var result = build();
-        result.register();
+        manger.register(result);
         return result;
     }
 }

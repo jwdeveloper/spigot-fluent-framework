@@ -1,0 +1,4 @@
+dependencies {
+    implementation project(':fluent-plugin')
+    implementation project(':fluent-plugin-core')
+}

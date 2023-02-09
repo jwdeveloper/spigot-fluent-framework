@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.query_builder.where_builders;
+package io.github.jwdeveloper.spigot.database.api.query_builder.where_builders;
 
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
 
 public interface WhereBuilderBridge extends AbstractQuery
 {

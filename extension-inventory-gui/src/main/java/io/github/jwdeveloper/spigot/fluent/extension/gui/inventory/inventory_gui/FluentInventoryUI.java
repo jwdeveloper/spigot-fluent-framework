@@ -1,4 +1,4 @@
-package inventory_gui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui;
 
 public interface FluentInventoryUI {
 

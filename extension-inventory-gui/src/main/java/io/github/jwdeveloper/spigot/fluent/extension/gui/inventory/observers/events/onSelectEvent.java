@@ -1,9 +1,9 @@
-package fluent_ui.observers.events;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.events;
 
-import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import org.bukkit.entity.Player;
 
-public record onSelectEvent<T>(ButtonUI buttonUI, T data,int index, Player player)
+public record onSelectEvent<T>(ButtonUI buttonUI, T data, int index, Player player)
 {
 
 }

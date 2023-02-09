@@ -23,7 +23,7 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.api.resolver;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.resolver;
 
 import java.nio.ByteBuffer;
 import java.util.UUID;

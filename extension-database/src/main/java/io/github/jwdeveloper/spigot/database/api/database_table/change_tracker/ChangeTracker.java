@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.database_table.change_tracker;
+package io.github.jwdeveloper.spigot.database.api.database_table.change_tracker;
 import jw.fluent.api.database.api.database_table.DbEntry;
 
 

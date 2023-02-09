@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.query_abstract;
+package io.github.jwdeveloper.spigot.database.api.query_abstract;
 
 public interface AbstractQuery
 {

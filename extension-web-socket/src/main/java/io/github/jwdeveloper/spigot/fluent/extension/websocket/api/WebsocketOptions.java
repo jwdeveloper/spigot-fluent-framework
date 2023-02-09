@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.websocket.extension.api;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.api;
 
 import lombok.Data;
 import lombok.Getter;

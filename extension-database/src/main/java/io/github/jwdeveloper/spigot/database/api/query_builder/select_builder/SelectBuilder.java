@@ -1,7 +1,7 @@
-package jw.fluent.api.database.api.query_builder.select_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.select_builder;
 
-import jw.fluent.api.database.api.query_builder.bridge_builder.BridgeBuilder;
-import jw.fluent.api.database.api.query_abstract.select.AbstractSelectQuery;
+import io.github.jwdeveloper.spigot.database.api.query_builder.bridge_builder.BridgeBuilder;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.select.AbstractSelectQuery;
 
 public interface SelectBuilder extends AbstractSelectQuery<SelectBuilder>
 {

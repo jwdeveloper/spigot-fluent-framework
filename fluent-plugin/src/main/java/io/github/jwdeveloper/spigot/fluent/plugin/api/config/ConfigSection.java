@@ -1,4 +1,4 @@
-package jw.fluent.plugin.api.config;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.config;
 
 
 

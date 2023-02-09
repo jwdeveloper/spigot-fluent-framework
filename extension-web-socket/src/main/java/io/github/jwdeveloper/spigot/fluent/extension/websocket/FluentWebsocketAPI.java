@@ -1,8 +1,7 @@
-package io.github.jwdeveloper.spigot.websocket.extension;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket;
 
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
-import io.github.jwdeveloper.spigot.websocket.extension.api.WebsocketOptions;
-import io.github.jwdeveloper.spigot.websocket.extension.implementation.WebsocketExtension;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.api.WebsocketOptions;
 
 import java.util.function.Consumer;
 

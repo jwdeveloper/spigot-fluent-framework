@@ -1,78 +1,65 @@
-package fluent_ui.styles;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles;
 
 import java.util.List;
 
-public class ButtonDescriptionInfoBuilder
-{
-    private ButtonStyleInfo buttonStyleInfo;
+public class ButtonDescriptionInfoBuilder {
+    private final ButtonStyleInfo buttonStyleInfo;
 
-    public ButtonDescriptionInfoBuilder()
-    {
+    public ButtonDescriptionInfoBuilder() {
         this(new ButtonStyleInfo());
     }
 
-    public ButtonDescriptionInfoBuilder(ButtonStyleInfo renderer)
-    {
+    public ButtonDescriptionInfoBuilder(ButtonStyleInfo renderer) {
         buttonStyleInfo = new ButtonStyleInfo();
     }
 
-    public ButtonDescriptionInfoBuilder setCatchId(String id)
-    {
+    public ButtonDescriptionInfoBuilder setCatchId(String id) {
         buttonStyleInfo.setId(id);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder setTitle(String title)
-    {
+    public ButtonDescriptionInfoBuilder setTitle(String title) {
         buttonStyleInfo.setDescriptionTitle(title);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder setOnLeftClick(String description)
-    {
+    public ButtonDescriptionInfoBuilder setOnLeftClick(String description) {
         buttonStyleInfo.setLeftClick(description);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder setOnRightClick(String description)
-    {
+    public ButtonDescriptionInfoBuilder setOnRightClick(String description) {
         buttonStyleInfo.setRightClick(description);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder setOnShiftClick(String description)
-    {
+    public ButtonDescriptionInfoBuilder setOnShiftClick(String description) {
         buttonStyleInfo.setShiftClick(description);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder addDescriptionLine(String line)
-    {
+    public ButtonDescriptionInfoBuilder addDescriptionLine(String line) {
         buttonStyleInfo.getDescriptionLines().add(line);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder addDescriptionLine(List<String> lines)
-    {
+    public ButtonDescriptionInfoBuilder addDescriptionLine(List<String> lines) {
         buttonStyleInfo.getDescriptionLines().addAll(lines);
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder addDescriptionLine(String ... lines)
-    {
+    public ButtonDescriptionInfoBuilder addDescriptionLine(String... lines) {
         buttonStyleInfo.getDescriptionLines().addAll(List.of(lines));
         return this;
     }
 
-    public ButtonDescriptionInfoBuilder addObserverPlaceholder(String placeholder)
-    {
+    public ButtonDescriptionInfoBuilder addObserverPlaceholder(String placeholder) {
         buttonStyleInfo.getObserverPlaceholder().add(placeholder);
         return this;
     }
 
-    public ButtonStyleInfo build()
-    {
-       return buttonStyleInfo;
+    public ButtonStyleInfo build() {
+        return buttonStyleInfo;
     }
 
 }

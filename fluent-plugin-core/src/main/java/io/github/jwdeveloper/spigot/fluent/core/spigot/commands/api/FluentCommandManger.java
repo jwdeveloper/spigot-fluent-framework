@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.Collection;
 import java.util.List;
 
-public interface CommandManger {
+public interface FluentCommandManger {
     boolean register(SimpleCommand command);
 
     boolean unregister(SimpleCommand command);

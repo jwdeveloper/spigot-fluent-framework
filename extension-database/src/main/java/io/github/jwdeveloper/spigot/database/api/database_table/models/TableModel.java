@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.database_table.models;
+package io.github.jwdeveloper.spigot.database.api.database_table.models;
 import lombok.Data;
 import java.util.ArrayList;
 import java.util.List;

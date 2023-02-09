@@ -1,24 +1,8 @@
-package jw.fluent.api.utilites;
-
-import be.seeseemelk.mockbukkit.MockBukkit;
-import be.seeseemelk.mockbukkit.MockPlugin;
-import be.seeseemelk.mockbukkit.ServerMock;
-import be.seeseemelk.mockbukkit.WorldMock;
-import be.seeseemelk.mockbukkit.entity.PlayerMock;
-import jw.fluent.plugin.api.FluentApiExtension;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.implementation.FluentApi;
-import jw.fluent.plugin.implementation.FluentApiBuilder;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.plugin.implementation.modules.dependecy_injection.FluentInjectionImpl;
 import lombok.Getter;
-import lombok.Setter;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
-public class FluentApiMock
+public class FluentPluginMock
 {
-    private static FluentApiMock INSTANCE;
+ /*   private static FluentPluginMock INSTANCE;
 
     @Getter
     private MockPlugin pluginMock;
@@ -39,7 +23,7 @@ public class FluentApiMock
 
     private static boolean enabled;
 
-    public FluentApiMock(FluentApiExtension extension)
+    public FluentPluginMock(FluentApiExtension extension)
     {
         if(!enabled)
         {
@@ -61,12 +45,12 @@ public class FluentApiMock
         injection = (FluentInjectionImpl) FluentApi.container();
     }
 
-    public static FluentApiMock getInstance()
+    public static FluentPluginMock getInstance()
     {
         enabled = true;
         if(INSTANCE == null)
         {
-            INSTANCE = new FluentApiMock(new FluentApiExtension() {
+            INSTANCE = new FluentPluginMock(new FluentApiExtension() {
                 @Override
                 public void onConfiguration(FluentApiSpigotBuilder builder) {
 
@@ -86,13 +70,13 @@ public class FluentApiMock
         return INSTANCE;
     }
 
-    public static FluentApiMock getInstance(FluentApiExtension extension)
+    public static FluentPluginMock getInstance(FluentApiExtension extension)
     {
         enabled = true;
         if(INSTANCE == null)
         {
-            INSTANCE = new FluentApiMock(extension);
+            INSTANCE = new FluentPluginMock(extension);
         }
         return INSTANCE;
-    }
+    }*/
 }

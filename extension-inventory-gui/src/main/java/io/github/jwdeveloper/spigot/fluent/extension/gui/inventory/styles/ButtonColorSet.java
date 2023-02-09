@@ -1,4 +1,4 @@
-package fluent_ui.styles;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles;
 
 import lombok.Data;
 import org.bukkit.ChatColor;

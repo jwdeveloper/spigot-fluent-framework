@@ -1,6 +1,6 @@
-package fluent_ui.observers.ints;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.ints;
 
-import jw.fluent.api.spigot.gui.fluent_ui.observers.NotifierOptions;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.NotifierOptions;
 import lombok.Getter;
 import lombok.Setter;
 

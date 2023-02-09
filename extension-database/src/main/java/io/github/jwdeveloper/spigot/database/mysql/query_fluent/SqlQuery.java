@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_fluent;
+package io.github.jwdeveloper.spigot.database.mysql.query_fluent;
 
 import jw.fluent.api.database.api.database_table.models.ColumnModel;
 import jw.fluent.api.database.api.database_table.models.TableModel;

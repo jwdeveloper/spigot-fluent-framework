@@ -1,9 +1,9 @@
-package fluent_ui.observers.list.checkbox;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.checkbox;
 
-import jw.fluent.api.spigot.gui.fluent_ui.observers.list.FluentListNotifier;
-import jw.fluent.api.spigot.gui.fluent_ui.observers.list.ListNotifierOptions;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
-import jw.fluent.api.utilites.messages.Emoticons;
+import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.FluentListNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.ListNotifierOptions;
 import org.bukkit.ChatColor;
 
 import java.util.List;

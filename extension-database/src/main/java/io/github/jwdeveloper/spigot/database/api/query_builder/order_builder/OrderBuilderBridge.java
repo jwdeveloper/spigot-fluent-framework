@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.query_builder.order_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.order_builder;
 
 public interface OrderBuilderBridge {
 

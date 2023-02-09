@@ -1,6 +1,5 @@
-package jw.fluent.plugin.api.config.migrations;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.config.migrations;
 
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.IOException;

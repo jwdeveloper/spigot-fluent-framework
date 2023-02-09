@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.file_handlers;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.file_handlers;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

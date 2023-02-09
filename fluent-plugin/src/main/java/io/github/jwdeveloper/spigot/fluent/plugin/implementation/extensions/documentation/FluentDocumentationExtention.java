@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.documentation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.documentation;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
@@ -16,9 +16,9 @@ import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.decorator.CommandsDocumentationDecorator;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.decorator.ConfigDocumentationDecorator;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.decorator.PermissionDocumentationDecorator;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.decorator.CommandsDocumentationDecorator;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.decorator.ConfigDocumentationDecorator;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.decorator.PermissionDocumentationDecorator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class FluentDocumentationExtention implements FluentApiExtension {
             decorator.decorate(documentation);
         }
         var renderers = getRenderers(model);
-        var basePath = StringUtils.isNullOrEmpty(model.getPath()) ? FluentApi.path() : model.getPath();
+        var basePath = StringUtils.isNullOrEmpty(model.getPath()) ? fluentAPI.path() : model.getPath();
         for (var renderer : renderers) {
             var result = renderer.render(new TextBuilder(), documentation);
             var path = basePath + FileUtility.separator() + renderer.getName();

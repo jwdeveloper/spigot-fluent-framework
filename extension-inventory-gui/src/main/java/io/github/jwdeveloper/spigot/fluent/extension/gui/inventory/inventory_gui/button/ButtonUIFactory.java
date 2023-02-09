@@ -1,6 +1,6 @@
-package inventory_gui.button;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button;
 
-import inventory_gui.InventoryUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

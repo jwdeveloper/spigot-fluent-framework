@@ -1,51 +1,48 @@
-package jw.fluent.api.spigot.gameobjects.implementation;
+package io.github.jwdeveloper.spigot.extension.gameobject.implementation;
 
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.spigot.events.EventBase;
-import jw.fluent.api.spigot.gameobjects.api.GameComponent;
-import jw.fluent.plugin.implementation.FluentApi;
+import io.github.jwdeveloper.spigot.extension.gameobject.api.FluentGameObjectManager;
+import io.github.jwdeveloper.spigot.extension.gameobject.api.GameComponent;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation.EventBase;
 import org.bukkit.Location;
 import org.bukkit.event.server.PluginDisableEvent;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameObjectManager extends EventBase {
-    private static GameObjectManager instance;
+public class GameObjectManager extends EventBase implements FluentGameObjectManager {
     private final List<GameComponent> gameObjects = new ArrayList();
+    private final SimpleLogger logger;
 
-    private static GameObjectManager getInstance() {
-        if (instance == null) {
-            instance = new GameObjectManager();
-        }
-        return instance;
+    public GameObjectManager(Plugin plugin, SimpleLogger logger) {
+        super(plugin);
+        this.logger = logger;
     }
 
-
-    public static boolean register(GameObject gameObject, Location location) {
-        if (getInstance().gameObjects.contains(gameObject)) {
+    public boolean register(GameObject gameObject, Location location) {
+        if (gameObjects.contains(gameObject)) {
             return false;
         }
-        getInstance().gameObjects.add(gameObject);
+        gameObjects.add(gameObject);
         try {
             gameObject.create(location.clone());
             return true;
         } catch (Exception e) {
-            FluentApi.logger().error("unable to create Gameobject" + gameObject.getClass().getSimpleName(), e);
+            logger.error("unable to create Gameobject" + gameObject.getClass().getSimpleName(), e);
         }
         return false;
     }
 
-    public static void unregister(GameObject gameObject) {
-        if (!getInstance().gameObjects.contains(gameObject)) {
+    public void unregister(GameObject gameObject) {
+        if (!gameObjects.contains(gameObject)) {
             return;
         }
-        getInstance().gameObjects.remove(gameObject);
-
+        gameObjects.remove(gameObject);
         try {
             gameObject.destroy();
         } catch (Exception e) {
-            FluentApi.logger().error("unable to destroy Gameobject" + gameObject.getClass().getSimpleName(), e);
+            logger.error("unable to destroy Gameobject" + gameObject.getClass().getSimpleName(), e);
         }
     }
 
@@ -57,7 +54,7 @@ public class GameObjectManager extends EventBase {
                 gameObject.destroy();
 
             } catch (Exception e) {
-                FluentApi.logger().error("unable to destroy gameobject" + gameObject.getClass().getSimpleName(), e);
+                logger.error("unable to destroy gameobject" + gameObject.getClass().getSimpleName(), e);
             }
         }
     }

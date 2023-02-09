@@ -9,6 +9,7 @@ import org.bukkit.ChatColor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 @Getter
 @Setter
@@ -19,7 +20,6 @@ public class CommandArgument
     private ArgumentType type = ArgumentType.TEXT;
 
     private ArgumentDisplay argumentDisplayMode = ArgumentDisplay.TYPE;
-
     private List<CommandArgumentValidator> validators = new ArrayList<>();
 
     private String description;
@@ -28,6 +28,7 @@ public class CommandArgument
 
     private List<String> tabCompleter = new ArrayList<>();
 
+    private Supplier<List<String>> onTabCompleter = ()->{return List.of();};
     public void addValidator(CommandArgumentValidator validator)
     {
         validators.add(validator);

@@ -1,6 +1,7 @@
-package jw.fluent.api.database.api.database_table.annotations;
+package io.github.jwdeveloper.spigot.database.api.database_table.annotations;
 
-import jw.fluent.api.database.mysql.utils.SqlTypes;
+
+import io.github.jwdeveloper.spigot.database.mysql.utils.SqlTypes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

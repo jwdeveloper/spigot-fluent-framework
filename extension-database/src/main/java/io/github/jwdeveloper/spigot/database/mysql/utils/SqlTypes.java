@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.utils;
+package io.github.jwdeveloper.spigot.database.mysql.utils;
 
 public class SqlTypes {
 

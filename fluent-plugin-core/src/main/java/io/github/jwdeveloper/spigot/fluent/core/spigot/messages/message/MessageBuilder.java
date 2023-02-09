@@ -3,6 +3,7 @@ package io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message;
 import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -19,12 +20,9 @@ import java.util.function.Consumer;
 public class MessageBuilder extends TextBuilder<MessageBuilder>
 {
     private final StringBuilder stringBuilder;
-    private final Plugin plugin;
 
     public MessageBuilder() {
-        //TODO pass plugin reference
         stringBuilder = new StringBuilder();
-        plugin = null;
     }
 
 
@@ -99,17 +97,17 @@ public class MessageBuilder extends TextBuilder<MessageBuilder>
 
     public MessageBuilder info() {
         return bold()
-                .inBrackets(plugin.getName() + " info", ChatColor.AQUA)
+                .inBrackets(" info", ChatColor.AQUA)
                 .space()
                 .reset();
     }
 
     public MessageBuilder error() {
-        return inBrackets(plugin.getName() + " error", ChatColor.RED).space();
+        return inBrackets(" error", ChatColor.RED).space();
     }
 
     public MessageBuilder warning() {
-        return inBrackets(plugin.getName() + " warning", ChatColor.YELLOW).space();
+        return inBrackets(" warning", ChatColor.YELLOW).space();
     }
 
     public MessageBuilder color(int r, int g, int b) {
@@ -246,7 +244,7 @@ public class MessageBuilder extends TextBuilder<MessageBuilder>
             System.out.println(message);
             return;
         }
-       // FluentLogger.LOGGER.log(message);
+        FluentLogger.LOGGER.info(message);
     }
 
 

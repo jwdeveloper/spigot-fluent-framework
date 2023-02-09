@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.mediator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.mediator;
 
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
 import io.github.jwdeveloper.spigot.fluent.core.mediator.api.MediatorHandler;
@@ -9,7 +9,7 @@ public class FluentMediatorExtention implements FluentApiExtension {
 
     @Override
     public void onConfiguration(FluentApiSpigotBuilder builder) {
-        var mediators = builder.assemblyScanner().findByInterface(MediatorHandler.class);
+        var mediators = builder.classFinder().findByInterface(MediatorHandler.class);
         builder.container().register(
                 FluentMediator.class,
                 LifeTime.SINGLETON,

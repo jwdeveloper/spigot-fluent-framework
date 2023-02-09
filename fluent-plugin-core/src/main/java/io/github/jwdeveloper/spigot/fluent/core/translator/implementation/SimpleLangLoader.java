@@ -1,12 +1,12 @@
-package jw.fluent.api.translator.implementation;
+package io.github.jwdeveloper.spigot.fluent.core.translator.implementation;
 
-import jw.fluent.api.translator.api.models.LangData;
-import jw.fluent.api.files.implementation.FileUtility;
-import jw.fluent.api.files.implementation.yaml_reader.implementation.YmlPathReader;
-import jw.fluent.api.utilites.java.ClassTypeUtility;
+import io.github.jwdeveloper.spigot.fluent.core.files.FileUtility;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.implementation.YmlPathReader;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.models.LangData;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -19,8 +19,8 @@ public class SimpleLangLoader {
     private final String languagePath = "languages";
     private final String baseTranslation = "en";
 
-    private final JavaPlugin plugin;
-    public SimpleLangLoader(JavaPlugin plugin)
+    private final Plugin plugin;
+    public SimpleLangLoader(Plugin plugin)
     {
         this.plugin =  plugin;
     }
@@ -52,7 +52,9 @@ public class SimpleLangLoader {
 
 
     public void generateFiles(String outputPath) throws IOException, InvalidConfigurationException {
-        var file = FileUtility.pluginFile(plugin);
+
+        //TODO FIX
+        var file = FileUtility.pluginFile((JavaPlugin)plugin);
         var langPaths = FileUtility.findAllYmlFiles(file);
         var reader = new YmlPathReader();
         var results = new HashMap<String, YamlConfiguration>();

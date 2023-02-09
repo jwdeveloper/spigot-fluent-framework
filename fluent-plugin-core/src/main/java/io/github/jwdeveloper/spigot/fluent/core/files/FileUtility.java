@@ -3,6 +3,7 @@ package io.github.jwdeveloper.spigot.fluent.core.files;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.*;
@@ -79,8 +80,7 @@ public interface FileUtility {
         FluentLogger.LOGGER.info("Could not delete path: " + file.getName());
     }
 
-    static String pluginPath(JavaPlugin javaPlugin) {
-
+    static String pluginPath(Plugin javaPlugin) {
         return javaPlugin.getDataFolder().getAbsoluteFile().toString();
     }
 

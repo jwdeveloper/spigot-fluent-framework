@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.decorator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.decorator;
 
 import io.github.jwdeveloper.spigot.fluent.core.decorator.api.builder.DecoratorBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.decorator.implementation.DecoratorBuilderImpl;

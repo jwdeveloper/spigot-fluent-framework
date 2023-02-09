@@ -1,4 +1,4 @@
-package inventory_gui.implementation.list_ui.search_manager;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.search_manager;
 
 import jw.fluent.api.desing_patterns.observer.implementation.ObserverBag;
 import jw.fluent.api.spigot.gui.fluent_ui.observers.list.FluentListIndexNotifier;

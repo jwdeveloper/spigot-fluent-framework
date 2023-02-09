@@ -1,6 +1,8 @@
-package jw.fluent.api.database.api.database_table.annotations;
+package io.github.jwdeveloper.spigot.database.api.database_table.annotations;
 
-import jw.fluent.api.database.api.database_table.enums.ReferenceOption;
+
+
+import io.github.jwdeveloper.spigot.database.api.database_table.models.enums.ReferenceOption;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

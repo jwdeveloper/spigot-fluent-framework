@@ -1,22 +1,23 @@
-package jw.fluent.plugin.implementation.config.migrations;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.config.migrations;
 
-import jw.fluent.plugin.api.config.migrations.ConfigMigration;
-import jw.fluent.plugin.api.config.migrations.ConfigMigrator;
-import jw.fluent.plugin.implementation.assembly_scanner.AssemblyScanner;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.versions.VersionCompare;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
+import io.github.jwdeveloper.spigot.fluent.core.common.versions.VersionNumberComparator;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.migrations.ConfigMigration;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.migrations.ConfigMigrator;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.assemby_scanner.AssemblyScanner;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FluentConfigMigrator implements ConfigMigrator {
     private final AssemblyScanner assemblyScanner;
-    private final JavaPlugin plugin;
-
+    private final Plugin plugin;
     private final String VERSION_PATH = "plugin.version";
 
-    public FluentConfigMigrator(AssemblyScanner assemblyScanner, JavaPlugin plugin) {
+    public FluentConfigMigrator(AssemblyScanner assemblyScanner, Plugin plugin) {
         this.assemblyScanner = assemblyScanner;
         this.plugin = plugin;
     }
@@ -37,10 +38,10 @@ public class FluentConfigMigrator implements ConfigMigrator {
         var currentVersion = getCurrentPluginVersion();
         var configVersion = getConfigVersion(configuration);
         var sorted = getMigrationsBetween(migrations, configVersion, currentVersion);
-        FluentLogger.LOGGER.log("Migration from",configVersion,"to",currentVersion,"has started");
+        FluentLogger.LOGGER.info("Migration from",configVersion,"to",currentVersion,"has started");
         for(var migration : sorted)
         {
-            FluentLogger.LOGGER.log("Migrating config to plugin version",migration.version());
+            FluentLogger.LOGGER.info("Migrating config to plugin version",migration.version());
             try {
                 migration.onPluginUpdate(configuration);
             }

@@ -1,4 +1,4 @@
-package jw.fluent.plugin.api.assembly_scanner;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.assembly_scanner;
 
 import java.lang.annotation.Annotation;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder.order_builder;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder.order_builder;
 
 import jw.fluent.api.database.api.query_builder.order_builder.OrderBuilder;
 import jw.fluent.api.database.api.query_builder.order_builder.OrderBuilderBridge;

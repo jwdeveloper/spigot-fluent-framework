@@ -23,7 +23,7 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.api.annotations;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

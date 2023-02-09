@@ -1,20 +1,11 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.resourcepack;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.resourcepack;
 
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.config.FluentConfig;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
-import jw.fluent.api.utilites.LinkMessageUtility;
-import jw.fluent.plugin.api.FluentApiExtension;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.api.config.ConfigProperty;
-import jw.fluent.plugin.api.config.FluentConfig;
-import jw.fluent.plugin.implementation.FluentApi;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.io.File;

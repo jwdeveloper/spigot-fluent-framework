@@ -1,4 +1,4 @@
-package fluent_ui.observers;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers;
 
 import lombok.Getter;
 

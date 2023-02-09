@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.query_builder.join_builder;
+package io.github.jwdeveloper.spigot.database.api.query_builder.join_builder;
 
-import jw.fluent.api.database.api.query_builder.where_builders.WhereBuilderBridge;
+import io.github.jwdeveloper.spigot.database.api.query_builder.where_builders.WhereBuilderBridge;
 
 public interface JoinBuilder extends WhereBuilderBridge
 {

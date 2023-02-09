@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.query_fluent.order;
+package io.github.jwdeveloper.spigot.database.api.query_fluent.order;
 
 public interface OrderFluentBridge<T>
 {

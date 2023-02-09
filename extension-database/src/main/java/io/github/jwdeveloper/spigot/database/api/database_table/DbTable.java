@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.database_table;
+package io.github.jwdeveloper.spigot.database.api.database_table;
 
-import jw.fluent.api.database.api.query_fluent.select.SelectFluentBridge;
+import io.github.jwdeveloper.spigot.database.api.query_fluent.select.SelectFluentBridge;
 
 import java.sql.Connection;
 import java.sql.SQLException;

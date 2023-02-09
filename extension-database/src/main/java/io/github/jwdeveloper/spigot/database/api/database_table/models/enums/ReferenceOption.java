@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.database.api.database_table.enums;
+package io.github.jwdeveloper.spigot.database.api.database_table.models.enums;
 
 public enum ReferenceOption
 {

@@ -1,9 +1,9 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.api.FluentPermission;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.api.FluentPermission;
 
 public class FluentPermissionExtention implements FluentApiExtension {
 

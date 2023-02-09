@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder;
 
 import jw.fluent.api.database.api.query_builder.delete_builder.DeleteBuilder;
 import jw.fluent.api.database.api.query_builder.insert_builder.InsertBuilder;

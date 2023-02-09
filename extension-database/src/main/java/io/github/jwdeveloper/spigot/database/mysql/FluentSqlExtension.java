@@ -1,25 +1,25 @@
 package io.github.jwdeveloper.spigot.database.mysql;
 
-import jw.fluent.api.database.mysql.factories.SqlConnectionFactory;
-import jw.fluent.api.database.mysql.factories.SqlDbContextFactory;
-import jw.fluent.api.database.mysql.models.SqlConnection;
-import jw.fluent.api.database.mysql.models.SqlDbContext;
-import jw.fluent.api.database.mysql.models.SqlTable;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
-import jw.fluent.plugin.api.FluentApiSpigotBuilder;
-import jw.fluent.plugin.api.FluentApiExtension;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
+
+import io.github.jwdeveloper.spigot.database.mysql.factories.SqlConnectionFactory;
+import io.github.jwdeveloper.spigot.database.mysql.factories.SqlDbContextFactory;
+import io.github.jwdeveloper.spigot.database.mysql.models.SqlConnection;
+import io.github.jwdeveloper.spigot.database.mysql.models.SqlDbContext;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class MySqlDbExtention<T> implements FluentApiExtension {
+public class FluentSqlExtension<T> implements FluentApiExtension {
     private final Class contextType;
     private final SqlConnection connectionDto;
     private Connection connection;
     private SqlDbContext context;
 
-    public MySqlDbExtention(Class<T> contextType, SqlConnection connectionDto) {
+    public FluentSqlExtension(Class<T> contextType, SqlConnection connectionDto) {
         this.contextType = contextType;
         this.connectionDto = connectionDto;
     }

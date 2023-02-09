@@ -1,4 +1,4 @@
-package inventory_gui.implementation.crafting_ui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.crafting_ui;
 
 import jw.fluent.api.spigot.gui.inventory_gui.InventoryUI;
 import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;

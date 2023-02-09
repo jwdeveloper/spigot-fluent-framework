@@ -1,8 +1,7 @@
-package jw.fluent.api.spigot.gameobjects.implementation;
+package io.github.jwdeveloper.spigot.extension.gameobject.implementation;
 
-import jw.fluent.api.spigot.gameobjects.api.GameComponent;
-import jw.fluent.api.spigot.gameobjects.api.GameComponentEvents;
-import jw.fluent.plugin.implementation.FluentApi;
+import io.github.jwdeveloper.spigot.extension.gameobject.api.GameComponent;
+import io.github.jwdeveloper.spigot.extension.gameobject.api.GameComponentEvents;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Location;
@@ -72,8 +71,6 @@ public class GameObject implements GameComponent, GameComponentEvents {
     }
 
 
-
-
     @Override
     public void setLocation(Location location) {
         this.location = location;
@@ -85,7 +82,7 @@ public class GameObject implements GameComponent, GameComponentEvents {
         }
     }
 
-    public  void setVisible(boolean visible) {
+    public void setVisible(boolean visible) {
         for (var childSet : children.values()) {
             for (var child : childSet) {
                 child.setVisible(visible);
@@ -107,8 +104,7 @@ public class GameObject implements GameComponent, GameComponentEvents {
         onCreated();
     }
 
-    public void onCreated()
-    {
+    public void onCreated() {
 
     }
 
@@ -136,7 +132,8 @@ public class GameObject implements GameComponent, GameComponentEvents {
             var obj = tClass.newInstance();
             return addGameComponent(obj);
         } catch (Exception e) {
-            FluentApi.logger().error("Unable to add GameObject " + tClass.getSimpleName(), e);
+            e.printStackTrace();
+            //  FluentApi.logger().error("Unable to add GameObject " + tClass.getSimpleName(), e);
             return null;
         }
     }
@@ -173,15 +170,13 @@ public class GameObject implements GameComponent, GameComponentEvents {
     }
 
 
-    public final <T extends GameComponent> void removeGameComponents(Class<T> _class)
-    {
+    public final <T extends GameComponent> void removeGameComponents(Class<T> _class) {
         var result = getGameComponents(_class);
         if (result.isEmpty()) {
             return;
         }
 
-        for(var component : result)
-        {
+        for (var component : result) {
             component.destroy();
         }
         children.remove(_class);

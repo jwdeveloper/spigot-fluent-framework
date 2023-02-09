@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder.where_builders;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder.where_builders;
 
 import jw.fluent.api.database.api.query_builder.group_builder.GroupBuilder;
 import jw.fluent.api.database.api.query_builder.order_builder.OrderBuilder;

@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.tools;/*
+/*
  * MIT License
  *
  * Copyright (c)  2023. jwdeveloper

@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.command;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.command;
 
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.CommandBuilder;
 

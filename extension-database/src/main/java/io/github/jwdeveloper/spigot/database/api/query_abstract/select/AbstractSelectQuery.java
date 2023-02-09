@@ -1,6 +1,6 @@
-package jw.fluent.api.database.api.query_abstract.select;
+package io.github.jwdeveloper.spigot.database.api.query_abstract.select;
 
-import jw.fluent.api.database.api.query_abstract.AbstractQuery;
+import io.github.jwdeveloper.spigot.database.api.query_abstract.AbstractQuery;
 
 public interface AbstractSelectQuery<T> extends AbstractQuery
 {

@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.factories;
+package io.github.jwdeveloper.spigot.database.mysql.factories;
 
 import jw.fluent.api.database.api.conncetion.DbConnectionFactory;
 import jw.fluent.api.database.mysql.models.SqlConnection;

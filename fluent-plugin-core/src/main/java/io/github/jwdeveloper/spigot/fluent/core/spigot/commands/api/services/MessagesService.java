@@ -12,19 +12,7 @@ public interface MessagesService
         return "Sorry but "+commandName+" is inactive";
     }
 
-    default String noPermission(CommandSender sender, String permission)
-    {
-        return new MessageBuilder()
-                .inBrackets(sender.getName())
-                .space()
-                .color(ChatColor.RED)
-                .color(ChatColor.BOLD)
-                .text("has no permission ->")
-                .space()
-                .color(ChatColor.RESET)
-                .text(permission)
-                .toString();
-    }
+    String noPermission(CommandSender sender, String permission);
 
     default String noAccess(CommandSender sender)
     {

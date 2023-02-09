@@ -1,13 +1,12 @@
-package fluent_ui.styles.renderer;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer;
 
-import fluent_ui.styles.ButtonColorSet;
-import fluent_ui.styles.ButtonStyleInfo;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonColorSet;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonStyleInfo;
 import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import org.bukkit.ChatColor;
 
 import java.util.ArrayList;

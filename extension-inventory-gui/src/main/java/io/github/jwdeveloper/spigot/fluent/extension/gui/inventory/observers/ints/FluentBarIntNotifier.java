@@ -1,11 +1,11 @@
-package fluent_ui.observers.ints;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.ints;
 
-import jw.fluent.api.spigot.gui.fluent_ui.styles.ButtonColorSet;
-import jw.fluent.api.spigot.gui.fluent_ui.styles.FluentButtonStyle;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
-import jw.fluent.api.spigot.messages.message.MessageBuilder;
-import jw.fluent.api.utilites.messages.Emoticons;
-import jw.fluent.plugin.implementation.modules.translator.FluentTranslator;
+import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
+import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonColorSet;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.FluentButtonStyle;
 import org.bukkit.ChatColor;
 
 public class FluentBarIntNotifier extends FluentIntNotifier

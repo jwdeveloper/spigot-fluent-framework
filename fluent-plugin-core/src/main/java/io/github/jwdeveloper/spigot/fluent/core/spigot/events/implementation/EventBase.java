@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.core.spigot.events;
+package io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;

@@ -1,7 +1,7 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.api.PermissionModel;
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.permissions.api.FluentPermission;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.permissions.api.FluentPermission;
 
 import java.util.List;
 

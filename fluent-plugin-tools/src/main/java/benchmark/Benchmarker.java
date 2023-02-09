@@ -1,4 +1,4 @@
-package jw.fluent.api.utilites.benchmark;
+package benchmark;
 
 import java.util.function.Consumer;
 

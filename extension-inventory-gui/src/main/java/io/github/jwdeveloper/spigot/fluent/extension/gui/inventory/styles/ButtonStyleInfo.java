@@ -1,6 +1,6 @@
-package fluent_ui.styles;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles;
 
-import jw.fluent.api.utilites.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import lombok.Data;
 
 import java.util.ArrayList;

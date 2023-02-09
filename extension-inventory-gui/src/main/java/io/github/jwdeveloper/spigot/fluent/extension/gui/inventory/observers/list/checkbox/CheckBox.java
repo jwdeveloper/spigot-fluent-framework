@@ -1,8 +1,8 @@
-package fluent_ui.observers.list.checkbox;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.checkbox;
 
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.desing_patterns.observer.implementation.ObserverBag;
-import jw.fluent.api.utilites.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.ObserverBag;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

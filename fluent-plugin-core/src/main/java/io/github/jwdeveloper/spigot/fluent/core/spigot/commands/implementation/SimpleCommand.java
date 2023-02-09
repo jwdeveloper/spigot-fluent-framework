@@ -2,19 +2,14 @@ package io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation;
 
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.CommandManger;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.enums.ArgumentType;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.models.CommandArgument;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.models.CommandModel;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.services.CommandService;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.services.EventsService;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.services.MessagesService;
-import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.implementation.PermissionsUtility;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -30,7 +25,6 @@ public class SimpleCommand extends Command {
     private final CommandService commandService;
     @Getter
     private final MessagesService messagesService;
-    private final CommandManger commandManger;
 
     @Setter
     private List<SimpleCommand> subCommands;
@@ -49,15 +43,14 @@ public class SimpleCommand extends Command {
                          List<SimpleCommand> simpleCommands,
                          CommandService commandService,
                          MessagesService messagesService,
-                         EventsService eventsService,
-                         CommandManger manger) {
+                         EventsService eventsService)
+                          {
         super(commandModel.getName());
         this.commandModel = commandModel;
         this.subCommands = simpleCommands;
         this.commandService = commandService;
         this.messagesService = messagesService;
         this.eventsService = eventsService;
-        this.commandManger = manger;
         this.setPermissionMessage(commandModel.getPermissionMessage());
         this.setDescription(commandModel.getDescription());
         this.setUsage(commandModel.getUsageMessage());
@@ -135,7 +128,8 @@ public class SimpleCommand extends Command {
             } else
                 return List.of();
         }
-        if (arguments.size() == 0) {
+        if (arguments.isEmpty())
+        {
             return List.of();
         }
 
@@ -143,17 +137,16 @@ public class SimpleCommand extends Command {
         argIndex = Math.max(argIndex, 0);
         var argument = arguments.get(argIndex);
         switch (argument.getArgumentDisplayMode()) {
-            case TAB_COMPLETE -> {
-                if (argument.getType() == ArgumentType.PLAYERS) {
-                    return Bukkit.getOnlinePlayers().stream().map(c -> c.getName()).toList();
-                }
-                return argument.getTabCompleter();
+            case TAB_COMPLETE ->
+            {
+                //TODO onTabCompleter for players and other stuff
+                return argument.getOnTabCompleter().get();
             }
             case NAME -> {
-                return List.of(new MessageBuilder().text(argument.getType().name()).toString());
+                return List.of(argument.getType().name());
             }
             case TYPE -> {
-                return List.of(new MessageBuilder().inBrackets(argument.getType().name().toLowerCase()).toString());
+                return List.of(argument.getType().name().toLowerCase());
             }
         }
         return List.of();
@@ -163,15 +156,15 @@ public class SimpleCommand extends Command {
     public void addSubCommand(SimpleCommand command) {
         if (command == this)
             return;
-        command.setParent(null);
-        this.subCommands.add(command);
+        command.setParent(this);
+        subCommands.add(command);
     }
 
     public void removeSubCommand(SimpleCommand command) {
         if (command.getParent() != this)
             return;
         command.setParent(null);
-        this.subCommands.remove(command);
+        subCommands.remove(command);
     }
 
     public String getName() {
@@ -189,44 +182,7 @@ public class SimpleCommand extends Command {
     }
 
     public boolean hasParent() {
-        return !(parent == null);
+        return parent != null;
     }
-
-    public void sendHelpMessage(CommandSender commandSender) {
-        var messages = new MessageBuilder()
-                .color(ChatColor.GRAY)
-                .bar("_", 30)
-                .newLine()
-                .color(ChatColor.GRAY)
-                .text("Available commands")
-                .newLine()
-                .newLine();
-        for (var subCommand : subCommands) {
-            messages.color(ChatColor.AQUA)
-                    .text("/")
-                    .text(subCommand.getName());
-            for (var argument : subCommand.getArguments()) {
-                messages.space().inBrackets(argument.getName());
-            }
-            messages.newLine();
-        }
-        var result = messages.color(ChatColor.GRAY)
-                .bar("_", 30).toArray();
-
-        commandSender.sendMessage(result);
-    }
-
-
-    public void unregister() {
-        var status = commandManger.unregister(this);
-        displayLog("Unregistered status " + status);
-
-    }
-
-    public void register() {
-        var status = commandManger.register(this);
-        displayLog("registered status " + status);
-    }
-
 
 }

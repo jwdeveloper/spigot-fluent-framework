@@ -1,12 +1,18 @@
-package jw.fluent.plugin.implementation.config.sections;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.config.sections;
 
-import jw.fluent.api.files.implementation.yaml_reader.api.annotations.YamlProperty;
-import jw.fluent.plugin.implementation.FluentApi;
+import io.github.jwdeveloper.spigot.fluent.core.files.yaml.api.annotations.YamlProperty;
 import lombok.Data;
+import org.bukkit.plugin.Plugin;
 
 @Data
 public class DefaultConfigSection
 {
     @YamlProperty(path = "plugin")
-    private String version = FluentApi.plugin().getDescription().getVersion();
+    private String version;
+
+    public DefaultConfigSection(Plugin plugin)
+    {
+        this.version = plugin.getDescription().getVersion();
+    }
+
 }

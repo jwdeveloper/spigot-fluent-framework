@@ -1,4 +1,4 @@
-package jw.fluent.api.database.api.conncetion;
+package io.github.jwdeveloper.spigot.database.api.conncetion;
 
 import java.util.Optional;
 

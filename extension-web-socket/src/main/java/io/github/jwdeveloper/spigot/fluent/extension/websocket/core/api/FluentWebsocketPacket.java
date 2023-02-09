@@ -23,7 +23,7 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.api;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api;
 
 import org.java_websocket.WebSocket;
 

@@ -1,10 +1,9 @@
-package fluent_ui.styles.renderer;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer;
 
-import fluent_ui.styles.ButtonColorSet;
-import fluent_ui.styles.ButtonStyleInfo;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonColorSet;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonStyleInfo;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
-import jw.fluent.api.spigot.gui.fluent_ui.styles.ButtonStyleInfo;
 
 import java.util.HashMap;
 import java.util.List;

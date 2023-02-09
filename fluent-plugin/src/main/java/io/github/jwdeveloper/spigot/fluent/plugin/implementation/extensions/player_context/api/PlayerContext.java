@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.player_context.api;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.api;
 
 
 import java.lang.annotation.ElementType;

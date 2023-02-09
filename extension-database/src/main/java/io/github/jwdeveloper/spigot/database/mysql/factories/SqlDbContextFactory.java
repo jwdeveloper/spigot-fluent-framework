@@ -1,13 +1,12 @@
-package jw.fluent.api.database.mysql.factories;
+package io.github.jwdeveloper.spigot.database.mysql.factories;
 
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.LifeTime;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.enums.RegistrationType;
-import jw.fluent.api.desing_patterns.dependecy_injection.api.models.RegistrationInfo;
-import jw.fluent.api.database.mysql.models.SqlDbContext;
-import jw.fluent.api.database.mysql.models.SqlTable;
-import jw.fluent.plugin.implementation.FluentApi;
-import jw.fluent.plugin.implementation.FluentApiSpigot;
-import jw.fluent.plugin.implementation.modules.dependecy_injection.FluentInjectionImpl;
+import io.github.jwdeveloper.spigot.database.mysql.models.SqlDbContext;
+import io.github.jwdeveloper.spigot.database.mysql.models.SqlTable;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.LifeTime;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.enums.RegistrationType;
+import io.github.jwdeveloper.spigot.fluent.core.injector.api.models.RegistrationInfo;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.dependecy_injection.FluentInjectionImpl;
 import lombok.SneakyThrows;
 
 import java.lang.reflect.ParameterizedType;

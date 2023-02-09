@@ -1,6 +1,7 @@
-package io.github.jwdeveloper.spigot.fluent.core.spigot.events;
+package io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.events.api.FluentEventManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -14,7 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class SimpleEventManager implements Listener {
+public class SimpleEventManager implements Listener, FluentEventManager
+{
     private final List<SimpleEvent<PluginDisableEvent>> onPluginDisableEvents;
     private final List<SimpleEvent<PluginEnableEvent>> onPluginEnableEvents;
     private final Plugin plugin;

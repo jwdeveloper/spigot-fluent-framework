@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder.table_builder;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder.table_builder;
 
 import jw.fluent.api.database.mysql.query_builder.SqlSyntaxUtils;
 

@@ -1,11 +1,24 @@
-bootJar {
-    enabled = false
+
+plugins {
+    id 'java-library'
 }
+
 jar {
     enabled = true
 }
+
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    runtime('com.h2database:h2')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    implementation project(':fluent-plugin-core')
+}
+
+task fatJar(type: Jar) {
+    classifier = 'all'
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.MF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+    with jar
 }

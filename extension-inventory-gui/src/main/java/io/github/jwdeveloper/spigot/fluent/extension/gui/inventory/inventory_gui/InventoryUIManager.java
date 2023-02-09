@@ -1,6 +1,5 @@
-package inventory_gui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui;
 
-import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation.EventBase;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.FluentTaskManager;
 import org.bukkit.Material;

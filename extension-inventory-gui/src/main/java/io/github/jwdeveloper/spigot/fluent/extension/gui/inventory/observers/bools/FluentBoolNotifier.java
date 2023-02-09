@@ -1,7 +1,7 @@
-package fluent_ui.observers.bools;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.bools;
 
-import fluent_ui.observers.FluentButtonNotifier;
-import inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.FluentButtonNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;

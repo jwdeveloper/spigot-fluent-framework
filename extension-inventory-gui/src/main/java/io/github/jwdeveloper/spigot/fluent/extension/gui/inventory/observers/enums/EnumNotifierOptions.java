@@ -1,6 +1,6 @@
-package fluent_ui.observers.enums;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.enums;
 
-import jw.fluent.api.spigot.gui.fluent_ui.observers.NotifierOptions;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.NotifierOptions;
 import lombok.Setter;
 
 import java.util.function.Function;

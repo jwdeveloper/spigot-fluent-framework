@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.websocket.extension.implementation;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
@@ -7,9 +7,9 @@ import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
-import io.github.jwdeveloper.spigot.websocket.core.api.FluentWebsocketPacket;
-import io.github.jwdeveloper.spigot.websocket.extension.api.FluentWebsocket;
-import io.github.jwdeveloper.spigot.websocket.extension.api.WebsocketOptions;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.FluentWebsocketPacket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.api.FluentWebsocket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.api.WebsocketOptions;
 
 import java.io.BufferedReader;
 import java.io.IOException;

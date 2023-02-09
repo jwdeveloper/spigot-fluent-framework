@@ -1,29 +1,18 @@
-package fluent_ui;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory;
 
 
-import fluent_ui.styles.ButtonDescriptionInfoBuilder;
-import fluent_ui.styles.renderer.ButtonStyleRenderer;
-import inventory_gui.InventoryUI;
-import inventory_gui.button.observer_button.ButtonObserverUI;
-import inventory_gui.button.observer_button.ButtonObserverUIBuilder;
-import inventory_gui.button.observer_button.observers.ButtonNotifier;
-import inventory_gui.button.observer_button.observers.ButtonObserver;
-import inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
-import inventory_gui.enums.ButtonType;
-import inventory_gui.events.ButtonUIEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonDescriptionInfoBuilder;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.ButtonStyleRenderer;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUI;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUIBuilder;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserver;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.ButtonType;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events.ButtonUIEvent;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.spigot.gui.fluent_ui.styles.ButtonDescriptionInfoBuilder;
-import jw.fluent.api.spigot.gui.fluent_ui.styles.renderer.ButtonStyleRenderer;
-import jw.fluent.api.spigot.gui.inventory_gui.InventoryUI;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.*;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonNotifier;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserver;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
-import jw.fluent.api.spigot.gui.inventory_gui.enums.ButtonType;
-import jw.fluent.api.spigot.gui.inventory_gui.events.ButtonUIEvent;
-import jw.fluent.plugin.implementation.modules.translator.FluentTranslator;
 import org.bukkit.Color;
 import org.bukkit.Material;
 

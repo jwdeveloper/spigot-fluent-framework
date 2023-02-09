@@ -1,4 +1,4 @@
-package jw.fluent.plugin.api.extention;
+package io.github.jwdeveloper.spigot.fluent.plugin.api.extention;
 
 public enum ExtentionPiority
 {

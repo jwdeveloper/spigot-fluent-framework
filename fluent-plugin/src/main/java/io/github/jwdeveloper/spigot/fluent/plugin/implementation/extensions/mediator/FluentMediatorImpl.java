@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.mediator;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.mediator;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.core.mediator.api.MediatorHandler;

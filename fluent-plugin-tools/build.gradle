@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'java-gradle-plugin'
+}
+jar {
+    enabled = true
+}
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly gradleApi()
+    implementation project(':fluent-plugin-core')
+}
+group='test'
+version='0.0.1'
+

@@ -1,10 +1,10 @@
-package jw.fluent.api.database.mysql.query_fluent;
+package io.github.jwdeveloper.spigot.database.mysql.query_fluent;
 
-import jw.fluent.api.database.api.database_table.models.TableModel;
-import jw.fluent.api.database.api.query_builder.order_builder.OrderBuilder;
-import jw.fluent.api.database.api.query_fluent.order.OrderFluent;
-import jw.fluent.api.database.mysql.query_builder.SqlSyntaxUtils;
-import jw.fluent.api.database.mysql.query_builder.order_builder.OrderBuilderImpl;
+import io.github.jwdeveloper.spigot.api.database.api.database_table.models.TableModel;
+import io.github.jwdeveloper.spigot.api.database.api.query_builder.order_builder.OrderBuilder;
+import io.github.jwdeveloper.spigot.api.database.api.query_fluent.order.OrderFluent;
+import io.github.jwdeveloper.spigot.api.database.mysql.query_builder.SqlSyntaxUtils;
+import io.github.jwdeveloper.spigot.api.database.mysql.query_builder.order_builder.OrderBuilderImpl;
 
 import java.sql.Connection;
 

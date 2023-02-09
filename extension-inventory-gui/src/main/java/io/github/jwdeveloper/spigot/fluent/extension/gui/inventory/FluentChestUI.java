@@ -1,7 +1,7 @@
-package fluent_ui;
-import fluent_ui.styles.FluentButtonStyle;
-import fluent_ui.styles.renderer.ButtonStyleRenderer;
-import fluent_ui.styles.renderer.CatchButtonStyleRenderer;
+package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.FluentButtonStyle;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.ButtonStyleRenderer;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.CatchButtonStyleRenderer;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.annotations.Inject;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.annotations.Injection;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;

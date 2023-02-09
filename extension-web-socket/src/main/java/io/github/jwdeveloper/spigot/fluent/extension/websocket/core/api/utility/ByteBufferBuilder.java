@@ -23,7 +23,7 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.api.utility;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.utility;
 
 import org.apache.commons.lang.ArrayUtils;
 

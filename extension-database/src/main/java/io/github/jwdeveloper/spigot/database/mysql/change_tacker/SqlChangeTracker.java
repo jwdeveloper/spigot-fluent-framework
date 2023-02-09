@@ -1,5 +1,9 @@
-package jw.fluent.api.database.mysql.change_tacker;
+package io.github.jwdeveloper.spigot.database.mysql.change_tacker;
 
+import io.github.jwdeveloper.spigot.database.api.database_table.change_tracker.ChangeTracker;
+import io.github.jwdeveloper.spigot.database.api.database_table.models.TableModel;
+import io.github.jwdeveloper.spigot.database.api.database_table.models.enums.EntryState;
+import io.github.jwdeveloper.spigot.database.mysql.models.SqlEntry;
 import jw.fluent.api.database.api.database_table.change_tracker.ChangeTracker;
 import jw.fluent.api.database.api.database_table.enums.EntryState;
 import jw.fluent.api.database.api.database_table.models.TableModel;

@@ -1,6 +1,6 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.player_context.implementation;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.implementation;
 
-import io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.player_context.api.FluentPlayer;
+import io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.player_context.api.FluentPlayer;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

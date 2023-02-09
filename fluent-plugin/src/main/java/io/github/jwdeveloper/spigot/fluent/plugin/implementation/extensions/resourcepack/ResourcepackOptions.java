@@ -1,8 +1,6 @@
-package io.github.jwdeveloper.spigot.fluent.plugin.implementation.modules.resourcepack;
+package io.github.jwdeveloper.spigot.fluent.plugin.implementation.extensions.resourcepack;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 public class ResourcepackOptions

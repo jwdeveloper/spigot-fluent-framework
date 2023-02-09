@@ -1,4 +1,4 @@
-package jw.fluent.api.database.mysql.query_builder.update_builder;
+package io.github.jwdeveloper.spigot.database.mysql.query_builder.update_builder;
 
 import jw.fluent.api.database.api.query_builder.update_builder.UpdateBuilder;
 import jw.fluent.api.database.api.query_builder.update_builder.UpdateConditionsQuery;

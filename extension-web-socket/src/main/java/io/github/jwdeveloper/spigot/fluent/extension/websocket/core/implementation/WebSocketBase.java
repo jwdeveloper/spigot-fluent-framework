@@ -23,11 +23,11 @@
  *
  */
 
-package io.github.jwdeveloper.spigot.websocket.core.implementation;
+package io.github.jwdeveloper.spigot.fluent.extension.websocket.core.implementation;
 
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
-import io.github.jwdeveloper.spigot.websocket.core.api.FluentWebsocketPacket;
+import io.github.jwdeveloper.spigot.fluent.extension.websocket.core.api.FluentWebsocketPacket;
 import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;

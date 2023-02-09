@@ -1,5 +1,6 @@
 package io.github.jwdeveloper.spigot.fluent.core.injector.implementation.containers.builder;
 
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.Container;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.builders.ContainerBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.injector.api.containers.builders.ContainerBuilderConfiguration;
@@ -13,7 +14,6 @@ import io.github.jwdeveloper.spigot.fluent.core.injector.implementation.events.E
 import io.github.jwdeveloper.spigot.fluent.core.injector.implementation.factory.InjectionInfoFactoryImpl;
 import io.github.jwdeveloper.spigot.fluent.core.injector.implementation.provider.InstanceProviderImpl;
 import io.github.jwdeveloper.spigot.fluent.core.injector.implementation.search.SearchAgentImpl;
-import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import lombok.SneakyThrows;
 
 import java.util.ArrayList;
@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 
 public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> implements ContainerBuilder<Builder>, ContainerBuilderConfiguration {
     protected final ContainerConfiguration config;
+
     public ContainerBuilderImpl() {
         config = new ContainerConfiguration();
     }
@@ -59,14 +60,13 @@ public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> imp
 
     @SneakyThrows
     @Override
-    public <T> Builder registerList(Class<T> _interface, LifeTime lifeTime)
-    {
+    public <T> Builder registerList(Class<T> _interface, LifeTime lifeTime) {
         config.addRegistration(new RegistrationInfo(
                 _interface,
                 null,
-                (x)->
+                (x) ->
                 {
-                    var container = (ContainerSearch)x;
+                    var container = (ContainerSearch) x;
                     var instances = container.findAllByInterface(_interface);
                     return new ArrayList(instances);
                 },
@@ -79,8 +79,7 @@ public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> imp
 
     @SneakyThrows
     @Override
-    public <T> Builder registerList(Class<T> _interface, LifeTime lifeTime, Function<Container, Object> provider)
-    {
+    public <T> Builder registerList(Class<T> _interface, LifeTime lifeTime, Function<Container, Object> provider) {
         config.addRegistration(new RegistrationInfo(
                 _interface,
                 null,
@@ -117,9 +116,8 @@ public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> imp
     }
 
     private void addRegisterdType(Class<?> type) throws Exception {
-        if(config.getRegisterdTypes().contains(type))
-        {
-            throw new Exception("Type "+type.getSimpleName()+" has been already registerd to container");
+        if (config.getRegisterdTypes().contains(type)) {
+            throw new Exception("Type " + type.getSimpleName() + " has been already registerd to container");
         }
         config.getRegisterdTypes().add(type);
     }
@@ -149,6 +147,11 @@ public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> imp
         });
     }
 
+    @Override
+    public Builder registerSigleton(Class<?> _interface, Function<Container, Object> provider) {
+        return register(_interface, LifeTime.SINGLETON, provider);
+    }
+
     public Builder registerTrasient(Class<?> _interface, Object instance) {
         return register(_interface, LifeTime.TRANSIENT, (x) ->
         {
@@ -162,9 +165,8 @@ public class ContainerBuilderImpl<Builder extends ContainerBuilder<Builder>> imp
         return builder();
     }
 
-    private Builder builder()
-    {
-        return (Builder)this;
+    private Builder builder() {
+        return (Builder) this;
     }
 
     public Container build() throws Exception {

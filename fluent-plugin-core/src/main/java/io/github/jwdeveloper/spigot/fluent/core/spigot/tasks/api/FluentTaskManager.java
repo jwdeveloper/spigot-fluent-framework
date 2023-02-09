@@ -3,7 +3,7 @@ package io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.implementation.SimpleTaskTimer;
 import org.bukkit.scheduler.BukkitTask;
 
-public interface TaskManager {
+public interface FluentTaskManager {
     SimpleTaskTimer taskTimer(int ticks, TaskAction task);
 
     BukkitTask task(Runnable action);
