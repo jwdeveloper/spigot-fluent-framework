@@ -262,6 +262,11 @@ public class ButtonUI {
         itemStack.setItemMeta(meta);
     }
 
+    public void delete()
+    {
+
+    }
+
     private void hideAttributes()
     {
         ItemMeta meta = ensureMeta(itemStack);

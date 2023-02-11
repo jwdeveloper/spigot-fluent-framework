@@ -92,10 +92,4 @@ public class FluentInjectionExtention implements FluentApiExtension {
     public void onConfiguration(FluentApiSpigotBuilder builder) {
 
     }
-
-    @Override
-    public void onFluentApiDisabled(FluentApiSpigot fluentAPI) throws Exception {
-
-    }
-
 }

@@ -43,8 +43,7 @@ public class SimpleCommand extends Command {
                          List<SimpleCommand> simpleCommands,
                          CommandService commandService,
                          MessagesService messagesService,
-                         EventsService eventsService)
-                          {
+                         EventsService eventsService) {
         super(commandModel.getName());
         this.commandModel = commandModel;
         this.subCommands = simpleCommands;
@@ -119,6 +118,9 @@ public class SimpleCommand extends Command {
                 if (sender instanceof Player player) {
                     List res = new ArrayList<>();
                     for (var cmd : subCommands) {
+                        if (cmd.getCommandModel().isHideFromTabDisplay()) {
+                            continue;
+                        }
                         if (PermissionsUtility.hasOnePermissionWithoutMessage(player, cmd.getPermission())) {
                             res.add(cmd.getName());
                         }
@@ -128,8 +130,7 @@ public class SimpleCommand extends Command {
             } else
                 return List.of();
         }
-        if (arguments.isEmpty())
-        {
+        if (arguments.isEmpty()) {
             return List.of();
         }
 
@@ -137,8 +138,7 @@ public class SimpleCommand extends Command {
         argIndex = Math.max(argIndex, 0);
         var argument = arguments.get(argIndex);
         switch (argument.getArgumentDisplayMode()) {
-            case TAB_COMPLETE ->
-            {
+            case TAB_COMPLETE -> {
                 //TODO onTabCompleter for players and other stuff
                 return argument.getOnTabCompleter().get();
             }

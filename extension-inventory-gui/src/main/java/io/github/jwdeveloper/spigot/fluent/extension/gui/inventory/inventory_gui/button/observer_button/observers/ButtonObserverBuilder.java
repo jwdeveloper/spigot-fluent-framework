@@ -1,7 +1,7 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers;
 
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 
 import java.util.function.Consumer;
 

@@ -10,6 +10,6 @@ public interface FluentUpdater {
 
     void downloadUpdateAsync(CommandSender commandSender);
     void checkUpdateAsync(Consumer<CheckUpdateInfo> consumer);
-    void checkUpdateAsync(CommandSender commandSender) ;
+    void checkUpdateAsync(CommandSender commandSender);
     CheckUpdateInfo checkUpdate() throws IOException;
 }

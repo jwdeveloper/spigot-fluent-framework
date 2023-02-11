@@ -18,8 +18,7 @@ public class Observer<T> implements Observable<T> {
     private final SimpleLogger logger;
 
     public Observer() {
-        //TODO pass logger as dependency
-        logger = new SimpleLogger(Logger.getLogger("test"));
+        logger = new SimpleLogger();
     }
 
     public Observer(Object classObject, String field) {
@@ -78,10 +77,6 @@ public class Observer<T> implements Observable<T> {
 
     public Class<?> getValueType() {
         return fieldType;
-    }
-
-    public boolean isBinded() {
-        return binded;
     }
 
     public void subscribe(Consumer<T> onChangeEvent) {

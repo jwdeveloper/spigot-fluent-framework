@@ -93,7 +93,7 @@ public class FluentTranslationExtension implements FluentApiExtension {
                     eventConfig.onExecute(commandEvent ->
                     {
                         var languageName = commandEvent.getCommandArgs()[0];
-                        if (!translator.langAvaliable(languageName)) {
+                        if (!translator.langAvailable(languageName)) {
                             new MessageBuilder()
                                     .warning()
                                     .text(" Language ", ChatColor.GRAY)

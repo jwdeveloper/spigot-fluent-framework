@@ -5,6 +5,8 @@ import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.FluentCommand;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.CommandBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.api.PermissionModel;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.FluentApiSpigotBuilder;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.ConfigProperty;
+import io.github.jwdeveloper.spigot.fluent.plugin.api.config.FluentConfig;
 import io.github.jwdeveloper.spigot.fluent.plugin.api.extention.FluentApiExtension;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApi;
 import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot;
@@ -21,6 +23,7 @@ import java.util.function.Consumer;
 
 public class FluentUpdaterExtension implements FluentApiExtension {
     private final Consumer<UpdaterApiOptions> optionsConsumer;
+    private UpdaterOptions options;
 
     public FluentUpdaterExtension(Consumer<UpdaterApiOptions> options) {
         optionsConsumer = options;
@@ -30,7 +33,11 @@ public class FluentUpdaterExtension implements FluentApiExtension {
     public void onConfiguration(FluentApiSpigotBuilder builder) {
         var updaterApiOptions = new UpdaterApiOptions();
         optionsConsumer.accept(updaterApiOptions);
-        var options = updaterApiOptions.getOptions();
+        options = updaterApiOptions.getOptions();
+
+        var section = createForceUpdateSection(builder.config(), options.isForceUpdate());
+        var isForceUpdate = builder.config().getOrCreate(section);
+        options.setForceUpdate(isForceUpdate);
 
         builder.container().register(FluentUpdater.class, LifeTime.SINGLETON, (c) ->
         {
@@ -60,7 +67,10 @@ public class FluentUpdaterExtension implements FluentApiExtension {
     @Override
     public void onFluentApiEnable(FluentApiSpigot fluentAPI) {
         var updater= fluentAPI.container().findInjection(FluentUpdater.class);
-        updater.checkUpdateAsync(Bukkit.getConsoleSender());
+        if(options.isForceUpdate())
+            updater.downloadUpdateAsync(Bukkit.getConsoleSender());
+        else
+            updater.checkUpdateAsync(Bukkit.getConsoleSender());
     }
 
     private CommandBuilder updatesCommand(UpdaterOptions options, PermissionModel permission, String defaultCommandName) {
@@ -91,5 +101,11 @@ public class FluentUpdaterExtension implements FluentApiExtension {
         permission.setDescription("Players with this permission can update plugin");
         builder.defaultPermissionSections().commands().addChild(permission);
         return permission;
+    }
+
+    private ConfigProperty<Boolean> createForceUpdateSection(FluentConfig config, boolean defaultValue) {
+        return new ConfigProperty<>("update.force-update",defaultValue, """
+                Automatically download plugin update when it's available
+                """);
     }
 }

@@ -1,6 +1,8 @@
 package io.github.jwdeveloper.spigot.fluent.core.common.logger;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.TextBuilder;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -8,12 +10,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SimpleLogger {
-    private final Logger logger;
+    private Logger logger;
     private final String errorBar;
 
+    @Getter
+    @Setter
+    private boolean active = true;
+
+    @Getter
+    @Setter
+    private String prefix = "";
+
     public SimpleLogger(Logger logger) {
-        assert logger != null;
+        this();
         this.logger = logger;
+    }
+
+    public SimpleLogger() {
         errorBar = getBuilder().newLine().text(ChatColor.BOLD).text(ChatColor.DARK_RED).bar("-", 100).newLine().toString();
     }
 
@@ -22,24 +35,36 @@ public class SimpleLogger {
     }
 
     public void info(Object... messages) {
+        if (!isActive()) {
+            return;
+        }
+
         var message = getBuilder()
                 .text(getPrefix("Info", ChatColor.AQUA))
                 .text(messages)
                 .toString();
-     //   logger.info(message);
+        //   logger.info(message);
         send(message);
     }
 
     public void success(Object... messages) {
+        if (!isActive()) {
+            return;
+        }
+
         var message = getBuilder()
                 .text(getPrefix("Success", ChatColor.GREEN))
                 .text(messages)
                 .toString();
-       // logger.log(Level.FINEST, message);
+        // logger.log(Level.FINEST, message);
         send(message);
     }
 
     public void warning(Object... messages) {
+        if (!isActive()) {
+            return;
+        }
+
         var message = getBuilder()
                 .text(getPrefix("Warning", ChatColor.YELLOW))
                 .text(messages)
@@ -48,29 +73,39 @@ public class SimpleLogger {
     }
 
     public void error(String message) {
+        if (!isActive()) {
+            return;
+        }
+
         var msg = getBuilder()
                 .text(getPrefix("Error", ChatColor.RED))
                 .text(message)
                 .toString();
-       // logger.log(Level.WARNING, message);
+        // logger.log(Level.WARNING, message);
         send(msg);
     }
 
     public void error(String message, Throwable throwable) {
+        if (!isActive()) {
+            return;
+        }
+
         var description = getErrorDescription(message, throwable);
         var stackTrace = getStackTrace(throwable);
         var errorMessage = getBuilder()
                 .text(description, errorBar, stackTrace, errorBar)
                 .toString();
-      //  logger.log(Level.WARNING, errorMessage);
+        //  logger.log(Level.WARNING, errorMessage);
         send(errorMessage);
     }
 
 
-    private void send(String message)
-    {
-        if(Bukkit.getConsoleSender() != null)
-        {
+    private void send(String message) {
+        if (!isActive()) {
+            return;
+        }
+
+        if (Bukkit.getConsoleSender() != null) {
             Bukkit.getConsoleSender().sendMessage(message);
             return;
         }
@@ -129,8 +164,9 @@ public class SimpleLogger {
     }
 
     private String getPrefix(String name, ChatColor color) {
-        return getBuilder().text(color, "[", name, "] ", ChatColor.RESET).toString();
+        return getBuilder().text(color, "[", name, "] ", ChatColor.RESET, prefix).toString();
     }
+
     private TextBuilder getBuilder() {
         return new TextBuilder();
     }

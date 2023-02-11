@@ -26,6 +26,7 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui;
 
 
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.implementation.PermissionsUtility;
@@ -110,14 +111,14 @@ public abstract class InventoryUI {
         onOpen(player);
         refreshButtons();
 
-        InventoryUIManager.registerUI(this);
+        registerUI(this);
         player.openInventory(getInventory());
         this.isOpen = true;
         displayLog("Open with Bukkit inv " + inventory.hashCode(), ChatColor.GREEN);
     }
 
     public void close() {
-        InventoryUIManager.unregisterUI(this);
+        unregisterUI(this);
         isOpen = false;
         if (!validatePlayer(player))
             return;
@@ -144,13 +145,13 @@ public abstract class InventoryUI {
         this.title = title;
         if (player == null || !player.isOnline())
             return;
-        InventoryUIManager.unregisterUI(this);
+        unregisterUI(this);
         var currentContent = getInventory().getContents();
         this.inventory = createInventory(inventoryType);
         getInventory().setContents(currentContent);
         if (isOpen)
             player.openInventory(getInventory());
-        InventoryUIManager.registerUI(this);
+        registerUI(this);
 
         this.displayLog("Title changed with Bukkit inv " + inventory.hashCode(), ChatColor.GREEN);
     }
@@ -311,7 +312,7 @@ public abstract class InventoryUI {
             }
         }
 
-        FluentMessage.message()
+        new MessageBuilder()
                 .color(ChatColor.DARK_RED)
                 .text(FluentApi.translator().get("permissions.one-required")).send(player);
 

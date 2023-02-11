@@ -1,16 +1,11 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers;
 
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObservable;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonNotifier;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObservable;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
-import jw.fluent.plugin.implementation.modules.files.logger.FluentLogger;
 import org.bukkit.entity.Player;
 
 import java.util.function.Supplier;
@@ -60,11 +55,11 @@ public class FluentButtonObserver<T> implements ButtonObservable<T> {
             currentObserver.unsubscribe(this::onChangeEvent);
 
             currentObserver = observer;
-            currentObserver.onChange(this::onChangeEvent);
+            currentObserver.subscribe(this::onChangeEvent);
         }
         if (currentObserver == null) {
             currentObserver = observer;
-            currentObserver.onChange(this::onChangeEvent);
+            currentObserver.subscribe(this::onChangeEvent);
         }
         buttonNotifier.onValueChanged(new ButtonObserverEvent<>(null, buttonUI, this, currentObserver.get()));
     }

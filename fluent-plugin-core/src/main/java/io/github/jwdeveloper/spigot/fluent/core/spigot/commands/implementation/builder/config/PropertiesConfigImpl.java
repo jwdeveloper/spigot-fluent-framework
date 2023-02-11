@@ -3,15 +3,21 @@ package io.github.jwdeveloper.spigot.fluent.core.spigot.commands.implementation.
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.builder.config.PropertiesConfig;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.enums.AccessType;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.commands.api.models.CommandModel;
+
 import java.util.Arrays;
 
 public class PropertiesConfigImpl implements PropertiesConfig {
 
     private final CommandModel model;
 
-    public PropertiesConfigImpl(CommandModel model)
-    {
+    public PropertiesConfigImpl(CommandModel model) {
         this.model = model;
+    }
+
+
+    public PropertiesConfig setHideFromTabDisplay(boolean isHide) {
+        model.setHideFromTabDisplay(isHide);
+        return this;
     }
 
     @Override

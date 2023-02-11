@@ -35,6 +35,7 @@ public abstract class FluentPlugin extends JavaPlugin implements FluentApiExtens
                 {
                     propertiesConfig.setDescription("Command only for plugin development purpose. Can be only trigger by Console. disables all plugins");
                     propertiesConfig.setUsageMessage("/disable");
+                    propertiesConfig.setHideFromTabDisplay(true);
                 })
                 .eventsConfig(eventConfig ->
                 {
@@ -44,7 +45,7 @@ public abstract class FluentPlugin extends JavaPlugin implements FluentApiExtens
                         Bukkit.getPluginManager().disablePlugins();
                     });
                 })
-                .build();
+                .buildAndRegister();
     }
 
 }

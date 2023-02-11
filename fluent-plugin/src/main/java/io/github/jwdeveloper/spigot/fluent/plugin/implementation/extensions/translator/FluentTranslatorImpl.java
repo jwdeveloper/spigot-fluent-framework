@@ -45,7 +45,7 @@ public class FluentTranslatorImpl implements FluentTranslator {
     }
 
     @Override
-    public boolean langAvaliable(String name) {
+    public boolean langAvailable(String name) {
         return lang.langExists(name);
     }
 

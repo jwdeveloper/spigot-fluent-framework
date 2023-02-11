@@ -15,6 +15,7 @@ import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import test.api.managers.events.ClickEvent;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -89,6 +90,14 @@ public class FluentButtonUIBuilder {
 
     public FluentButtonUIBuilder setPermissions(String... permissions) {
         buttonBuilder.setPermissions(permissions);
+        return this;
+    }
+    public FluentButtonUIBuilder setOnRefresh(Consumer<ClickEvent> event) {
+
+        return this;
+    }
+    public FluentButtonUIBuilder setOnLeftClick(Consumer<ClickEvent> event) {
+
         return this;
     }
 

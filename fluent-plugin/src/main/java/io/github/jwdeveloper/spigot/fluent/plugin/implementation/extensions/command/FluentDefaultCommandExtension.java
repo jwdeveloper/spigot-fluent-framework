@@ -7,7 +7,7 @@ import io.github.jwdeveloper.spigot.fluent.plugin.implementation.FluentApiSpigot
 
 public class FluentDefaultCommandExtension implements FluentApiExtension {
 
-    private CommandBuilder commandBuilder;
+    private final CommandBuilder commandBuilder;
 
     public FluentDefaultCommandExtension(CommandBuilder commandBuilder) {
         this.commandBuilder = commandBuilder;
@@ -20,11 +20,6 @@ public class FluentDefaultCommandExtension implements FluentApiExtension {
 
     @Override
     public void onFluentApiEnable(FluentApiSpigot fluentAPI) throws Exception {
-        commandBuilder.build();
-    }
-
-    @Override
-    public void onFluentApiDisabled(FluentApiSpigot fluentAPI) throws Exception {
-
+        commandBuilder.buildAndRegister();
     }
 }

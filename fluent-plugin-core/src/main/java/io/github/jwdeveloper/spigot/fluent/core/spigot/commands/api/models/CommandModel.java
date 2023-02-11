@@ -13,15 +13,15 @@ public class CommandModel {
 
     private String name;
 
-    private String shortDescription ="";
+    private String shortDescription = "";
 
     private String description = "";
 
-    private String usageMessage ="";
+    private String usageMessage = "";
 
-    private String permissionMessage ="";
+    private String permissionMessage = "";
 
-    private String label ="";
+    private String label = "";
 
     private List<AccessType> commandAccesses = new ArrayList<>();
 
@@ -29,5 +29,7 @@ public class CommandModel {
 
     private List<CommandArgument> arguments = new ArrayList<>();
 
-    private boolean allParametersRequired =true;
+    private boolean allParametersRequired = true;
+
+    private boolean hideFromTabDisplay = false;
 }

@@ -11,9 +11,7 @@ import java.util.function.Consumer;
 public class SimpleTaskTimer {
     private final TaskAction task;
     private final Plugin plugin;
-
     private final SimpleLogger logger;
-
     private Consumer<SimpleTaskTimer> onStop;
     private Consumer<SimpleTaskTimer> onStart;
     private int speed = 20;

@@ -19,6 +19,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/extension-gameobject" />
+            <option value="$PROJECT_DIR$/extension-inventory-gui" />
             <option value="$PROJECT_DIR$/extension-web-socket" />
             <option value="$PROJECT_DIR$/fluent-plugin" />
             <option value="$PROJECT_DIR$/fluent-plugin-core" />

@@ -14,7 +14,7 @@ public interface FluentTranslator
 
     boolean setLanguage(String name);
 
-    boolean langAvaliable(String name);
+    boolean langAvailable(String name);
 
     void generateEmptyTranlations();
 }

@@ -16,5 +16,7 @@ public interface PropertiesConfig extends BuilderConfig {
 
     PropertiesConfig addPermissions(String... permissions);
 
-     PropertiesConfig setAccess(AccessType accessType);
+    PropertiesConfig setAccess(AccessType accessType);
+
+    PropertiesConfig setHideFromTabDisplay(boolean isHide);
 }
