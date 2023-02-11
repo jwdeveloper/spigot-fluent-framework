@@ -1,6 +1,9 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory;
 
 
+import core.api.FluentInventory;
+import core.implementation.FluentInventoryImpl;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonDescriptionInfoBuilder;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.ButtonStyleRenderer;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
@@ -15,21 +18,17 @@ import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
 import org.bukkit.Color;
 import org.bukkit.Material;
-import test.api.managers.events.ClickEvent;
+import core.api.managers.events.ClickEvent;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 
 public class FluentButtonUIBuilder {
-    private final FluentTranslator translator;
     private final ButtonDescriptionInfoBuilder descriptionBuilder;
-    private final ButtonStyleRenderer renderer;
     private final ButtonObserverUIBuilder buttonBuilder;
 
-    public FluentButtonUIBuilder(FluentTranslator translator, ButtonStyleRenderer renderer) {
-        this.renderer = renderer;
-        this.translator = translator;
+    public FluentButtonUIBuilder() {
         descriptionBuilder = new ButtonDescriptionInfoBuilder();
         buttonBuilder = new ButtonObserverUIBuilder();
     }
@@ -127,5 +126,13 @@ public class FluentButtonUIBuilder {
         buttonBuilder.setDescription(description);
         buttonBuilder.setTitle(" ");
         return buttonBuilder.buildAndAdd(inventoryUI);
+    }
+
+
+    public ButtonObserverUI build(ButtonStyleRenderer renderer) {
+        var description = renderer.render(descriptionBuilder.build());
+        buttonBuilder.setDescription(description);
+        buttonBuilder.setTitle(" ");
+        return buttonBuilder.build();
     }
 }

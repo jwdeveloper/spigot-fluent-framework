@@ -1,4 +1,4 @@
-package test;
+package core;
 
 
 import org.apache.tools.ant.Project;

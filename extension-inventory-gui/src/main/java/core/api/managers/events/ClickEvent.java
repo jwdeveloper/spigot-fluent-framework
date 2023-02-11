@@ -1,21 +1,23 @@
-package test.api.managers.events;
+package core.api.managers.events;
 
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
-import org.bukkit.inventory.ItemStack;
+import core.api.FluentInventory;
 
 @Getter
-public class ClickPlayerInventoryEvent implements Cancellable
-{
-    private Player player;
-    private ItemStack buttonUI;
-    public ClickPlayerInventoryEvent(Player player, ItemStack buttonUI) {
-        this.player = player;
-        this.buttonUI = buttonUI;
-    }
+public class ClickEvent implements Cancellable {
 
+    private final Player player;
+    private final ButtonUI button;
+    private final FluentInventory inventory;
+
+    public ClickEvent(Player player, ButtonUI button, FluentInventory inventory) {
+        this.player = player;
+        this.button = button;
+        this.inventory = inventory;
+    }
 
 
     @Override

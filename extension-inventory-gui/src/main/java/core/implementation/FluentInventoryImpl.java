@@ -1,5 +1,6 @@
-package test.api;
+package core.implementation;
 
+import core.implementation.managers.ButtonManagerImpl;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUI;
@@ -9,55 +10,43 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import test.api.builder.InventoryDecoratorImpl;
-import test.api.enums.InventoryState;
-import test.api.managers.ButtonManager;
-import test.api.managers.ChildrenManager;
-import test.api.managers.PermissionManager;
-import test.api.managers.buttons.ButtonManagerImpl;
-import test.api.managers.events.*;
-import test.listeners.InventorySpigotListener;
+import core.api.FluentInventory;
+import core.api.InventorySettings;
+import core.api.enums.InventoryState;
+import core.api.managers.buttons.ButtonManager;
+import core.api.managers.ChildrenManager;
+import core.api.managers.permissions.PermissionManager;
+import core.api.managers.events.*;
 
 public class FluentInventoryImpl implements FluentInventory {
-
-    @Getter
-    private String title;
-    @Getter
-    private int size;
-
-    @Getter
-    private int slots;
     @Getter
     private Player player;
+
     @Getter
-    private InventoryState state;
-    @Getter
-    private Inventory handle;
-    private InventoryType inventoryType;
+    private final InventorySettings inventorySettings;
     private final ChildrenManager children;
     private final ButtonManagerImpl buttonManager;
     private final EventsManager events;
     private final PermissionManager permission;
     private final SimpleLogger logger;
-
     private final InventorySpigotListener spigotListener;
 
     public FluentInventoryImpl(ChildrenManager children,
                                ButtonManager buttons,
                                EventsManager events,
                                PermissionManager permission,
-                               InventorySpigotListener spigotListener) {
+                               InventorySpigotListener spigotListener,
+                               InventorySettings inventorySettings) {
         this.children = children;
         this.buttonManager = (ButtonManagerImpl) buttons;
         this.events = events;
         this.permission = permission;
+        this.spigotListener = spigotListener;
+        this.inventorySettings = inventorySettings;
         this.logger = new SimpleLogger();
         this.logger.setPrefix(this.toString());
-        this.spigotListener = spigotListener;
-        state = InventoryState.NOT_CREATED;
     }
 
 
@@ -68,22 +57,20 @@ public class FluentInventoryImpl implements FluentInventory {
 
         if (!doOnCreateEvent(player))
             return;
-        state = InventoryState.CREATED;
+        inventorySettings.setState(InventoryState.CREATED);
         if (children.getParent().isPresent()) {
             children.getParent().get().close();
         }
-
-        updateHandle();
-
+        inventorySettings.setHandle(createInventory());
         if (!doOnOpenEvent(player)) {
             return;
         }
         this.player = player;
         refresh();
         spigotListener.subscribe(this);
-        player.openInventory(handle);
-        state = InventoryState.OPEN;
-        logger.info("Open Inventory for handle", handle.hashCode());
+        player.openInventory(inventorySettings.getHandle());
+        inventorySettings.setState(InventoryState.OPEN);
+        logger.info("Open Inventory for handle",inventorySettings.getHandle());
     }
 
     @Override
@@ -94,13 +81,13 @@ public class FluentInventoryImpl implements FluentInventory {
     @Override
     public void refresh() {
         buttonManager.refresh();
-        logger.info("New content loaded for Bukkit inv ", handle.hashCode());
+        logger.info("New content loaded for Bukkit inv ", inventorySettings.getHandle());
     }
 
     @Override
     public boolean click(InventoryClickEvent event) {
         try {
-            if (event.getSlot() > getSlots()) {
+            if (event.getSlot() > inventorySettings.getSlots()) {
                 if (!doOnClickPlayerInventoryEvent(player, event.getCurrentItem())) {
                     return false;
                 }
@@ -140,29 +127,30 @@ public class FluentInventoryImpl implements FluentInventory {
             }
             return true;
         } catch (Exception e) {
-            logger.error("Error onClick, inventory " + this.getTitle() + " by player " + player.getName(), e);
+            logger.error("Error onClick, inventory " + inventorySettings.getTitle() + " by player " + player.getName(), e);
             return false;
         }
     }
 
     @Override
-    public void drag(InventoryDragEvent event) {
+    public void drag(InventoryDragEvent event)
+    {
 
     }
 
     @Override
     public void setTitle(String title) {
-        this.title = title;
+        inventorySettings.setTitle(title);
         if (player == null || !player.isOnline())
             return;
         spigotListener.unsubscribe(this);
-        var currentContent = handle.getContents();
-        updateHandle();
-        handle.setContents(currentContent);
-        if (state == InventoryState.OPEN)
-            player.openInventory(handle);
+        var currentContent = inventorySettings.getHandle().getContents();
+        inventorySettings.setHandle(createInventory());
+        inventorySettings.getHandle().setContents(currentContent);
+        if (inventorySettings.getState() == InventoryState.OPEN)
+            player.openInventory(inventorySettings.getHandle());
         spigotListener.subscribe(this);
-        logger.info("Title changed with Bukkit inv ", handle.hashCode());
+        logger.info("Title changed with Bukkit inv ", inventorySettings.getHandle().hashCode());
     }
 
 
@@ -185,12 +173,18 @@ public class FluentInventoryImpl implements FluentInventory {
     }
 
     private boolean doOnCreateEvent(Player player) {
-        if (state != InventoryState.NOT_CREATED) {
+        if (inventorySettings.getState() != InventoryState.NOT_CREATED) {
             return true;
         }
-        var event = new CreateGuiEvent(player, new InventoryDecoratorImpl(this));
+        var decorator = new InventoryDecoratorImpl(this);
+        var event = new CreateGuiEvent(player, decorator);
         events.onCreate().invoke(event);
-        return event.isCancelled();
+        if(event.isCancelled())
+        {
+            return false;
+        }
+        decorator.apply();
+        return true;
     }
 
     private boolean doOnOpenEvent(Player player) {
@@ -211,23 +205,28 @@ public class FluentInventoryImpl implements FluentInventory {
         return true;
     }
 
-    private void updateHandle() {
-        handle = createInventory();
-        buttonManager.updateHandle(handle);
-    }
-
     private Inventory createInventory() {
-        switch (inventoryType) {
+        switch (inventorySettings.getInventoryType()) {
             case CHEST:
-                return Bukkit.createInventory(player, size * 9, title);
+                return Bukkit.createInventory(player, inventorySettings.getSlots(), inventorySettings.getTitle());
             case WORKBENCH:
-                return Bukkit.createInventory(player, inventoryType, title);
+                return Bukkit.createInventory(player, inventorySettings.getInventoryType(), inventorySettings.getTitle());
             default:
-                logger.warning("Sorry inventory type of " + inventoryType.name() + " is not implemented yet ;<");
+                logger.warning("Sorry inventory type of " + inventorySettings.getInventoryType() + " is not implemented yet ;<");
         }
-        return Bukkit.createInventory(player, inventoryType, title);
+        return Bukkit.createInventory(player, inventorySettings.getInventoryType(), inventorySettings.getTitle());
     }
 
+
+    public InventoryState state()
+    {
+        return inventorySettings.getState();
+    }
+
+    public Inventory handle()
+    {
+        return inventorySettings.getHandle();
+    }
 
     @Override
     public ChildrenManager children() {

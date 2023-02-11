@@ -1,5 +1,11 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.search_manager;
 
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.ObserverBag;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserver;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.search_manager.events.SearchEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.search_manager.events.SearchFilterEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.FluentListIndexNotifier;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.list.ListNotifierOptions;
 import jw.fluent.api.desing_patterns.observer.implementation.ObserverBag;
 import jw.fluent.api.spigot.gui.fluent_ui.observers.list.FluentListIndexNotifier;
 import jw.fluent.api.spigot.gui.fluent_ui.observers.list.ListNotifierOptions;

@@ -1,4 +1,4 @@
-package test.listeners;
+package core.implementation;
 
 import io.github.jwdeveloper.spigot.fluent.core.spigot.events.implementation.EventBase;
 import org.bukkit.Material;
@@ -13,8 +13,7 @@ import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import test.api.FluentInventoryImpl;
-import test.api.enums.InventoryState;
+import core.api.enums.InventoryState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +42,8 @@ public class InventorySpigotListener extends EventBase {
     private void onInventoryClose(InventoryCloseEvent event) {
         Inventory spigotInventory;
         for (var inventoryUI : inventoriesGui) {
-            spigotInventory = inventoryUI.getHandle();
-            if (spigotInventory == null || inventoryUI.getState() == InventoryState.CLOSED) continue;
+            spigotInventory = inventoryUI.handle();
+            if (spigotInventory == null || inventoryUI.state() == InventoryState.CLOSED) continue;
             if (event.getInventory() == spigotInventory) {
                 inventoryUI.close();
                 break;
@@ -57,8 +56,8 @@ public class InventorySpigotListener extends EventBase {
     private void onInventoryOpen(InventoryOpenEvent event) {
         Inventory inventory;
         for (var InventoryUI : inventoriesGui) {
-            inventory = InventoryUI.getHandle();
-            if (inventory == null || InventoryUI.getState() != InventoryState.OPEN) continue;
+            inventory = InventoryUI.handle();
+            if (inventory == null || InventoryUI.state() != InventoryState.OPEN) continue;
             if (event.getInventory() == inventory) {
                 InventoryUI.refresh();
                 break;
@@ -73,8 +72,8 @@ public class InventorySpigotListener extends EventBase {
         Inventory inventory;
         ItemStack selectedItem;
         for (var inventoryUI : inventoriesGui) {
-            inventory = inventoryUI.getHandle();
-            if (inventory == null || inventoryUI.getState() != InventoryState.OPEN) continue;
+            inventory = inventoryUI.handle();
+            if (inventory == null || inventoryUI.state() != InventoryState.OPEN) continue;
 
             if (event.getInventory() == inventory) {
                 selectedItem = event.getCurrentItem();
@@ -97,8 +96,8 @@ public class InventorySpigotListener extends EventBase {
 
         Inventory inventory;
         for (var inventoryUI : inventoriesGui) {
-            inventory = inventoryUI.getHandle();
-            if (inventory == null || inventoryUI.getState() != InventoryState.OPEN) continue;
+            inventory = inventoryUI.handle();
+            if (inventory == null || inventoryUI.state() != InventoryState.OPEN) continue;
 
             if (event.getInventory() == inventory) {
                 inventoryUI.drag(event);

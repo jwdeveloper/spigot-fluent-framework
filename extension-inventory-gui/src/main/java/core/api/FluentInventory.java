@@ -1,11 +1,12 @@
-package test.api;
+package core.api;
+import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
-import test.api.managers.ButtonManager;
-import test.api.managers.ChildrenManager;
-import test.api.managers.events.EventsManager;
-import test.api.managers.PermissionManager;
+import core.api.managers.buttons.ButtonManager;
+import core.api.managers.ChildrenManager;
+import core.api.managers.events.EventsManager;
+import core.api.managers.permissions.PermissionManager;
 
 public interface FluentInventory
 {
@@ -29,4 +30,5 @@ public interface FluentInventory
     EventsManager events();
 
     PermissionManager permissions();
+    SimpleLogger logger();
 }

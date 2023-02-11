@@ -1,5 +1,7 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui;
 
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.content_manger.ButtonUIMapper;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.list_ui.search_manager.SearchManager;
 import jw.fluent.api.spigot.gui.fluent_ui.FluentChestUI;
 import jw.fluent.api.spigot.gui.inventory_gui.EventsListenerInventoryUI;
 import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;

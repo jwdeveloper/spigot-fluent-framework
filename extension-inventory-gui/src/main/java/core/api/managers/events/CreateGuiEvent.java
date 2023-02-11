@@ -1,10 +1,10 @@
-package test.api.managers.events;
+package core.api.managers.events;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
-import test.api.builder.InventoryDecorator;
+import core.api.InventoryDecorator;
 
 @Getter
 public class CreateGuiEvent implements Cancellable {

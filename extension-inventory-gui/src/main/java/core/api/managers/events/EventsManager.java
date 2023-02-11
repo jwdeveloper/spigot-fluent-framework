@@ -1,8 +1,4 @@
-package test.api.managers.events;
-
-import org.bukkit.entity.Player;
-
-import java.util.function.Consumer;
+package core.api.managers.events;
 
 public interface EventsManager
 {

@@ -1,4 +1,4 @@
-package test.api.enums;
+package core.api.enums;
 
 public enum InventoryState
 {

@@ -2,7 +2,6 @@ package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gu
 
 
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.FluentButtonObserver;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObservable;
@@ -13,7 +12,7 @@ import lombok.Setter;
 import lombok.Singular;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import test.api.managers.ButtonManager;
+import core.api.managers.buttons.ButtonManager;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

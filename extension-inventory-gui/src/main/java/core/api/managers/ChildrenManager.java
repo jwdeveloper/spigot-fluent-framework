@@ -1,6 +1,6 @@
-package test.api.managers;
+package core.api.managers;
 
-import test.api.FluentInventory;
+import core.api.FluentInventory;
 
 import java.util.Optional;
 

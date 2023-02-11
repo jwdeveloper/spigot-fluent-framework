@@ -1,4 +1,4 @@
-package test.api.managers.events;
+package core.api.managers.events;
 
 import org.bukkit.event.Cancellable;
 
