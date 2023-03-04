@@ -26,8 +26,7 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui;
 
 
-import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.SimpleMessage;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
+import core.implementation.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
 import io.github.jwdeveloper.spigot.fluent.core.spigot.permissions.implementation.PermissionsUtility;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.PermissionType;

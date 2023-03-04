@@ -2,8 +2,8 @@ package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.li
 
 import io.github.jwdeveloper.spigot.fluent.core.common.Emoticons;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import core.implementation.button.ButtonUI;
+import core.implementation.button.observer_button.observers.ButtonObserverEvent;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.FluentButtonNotifier;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.events.onSelectEvent;
 import org.bukkit.ChatColor;

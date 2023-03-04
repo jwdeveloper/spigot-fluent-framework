@@ -1,21 +1,17 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory;
 
 
-import core.api.FluentInventory;
-import core.implementation.FluentInventoryImpl;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.ButtonDescriptionInfoBuilder;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.ButtonStyleRenderer;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUIBuilder;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserver;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
+import core.implementation.button.observer_button.ButtonObserverUI;
+import core.implementation.button.observer_button.ButtonObserverUIBuilder;
+import core.implementation.button.observer_button.observers.ButtonNotifier;
+import core.implementation.button.observer_button.observers.ButtonObserver;
+import core.implementation.button.observer_button.observers.ButtonObserverBuilder;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.ButtonType;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events.ButtonUIEvent;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
-import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import core.api.managers.events.ClickEvent;

@@ -10,7 +10,7 @@ public interface EventsManager
 
      EventsGroup<OpenGuiEvent> onOpen();
 
-     EventsGroup onClose();
+     EventsGroup<OpenGuiEvent> onClose();
 
      EventsGroup onDrag();
 }

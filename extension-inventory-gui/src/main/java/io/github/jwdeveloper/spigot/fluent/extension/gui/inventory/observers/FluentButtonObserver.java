@@ -2,10 +2,10 @@ package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers;
 
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.FluentLogger;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonNotifier;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObservable;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
+import core.implementation.button.ButtonUI;
+import core.implementation.button.observer_button.observers.ButtonNotifier;
+import core.implementation.button.observer_button.observers.ButtonObservable;
+import core.implementation.button.observer_button.observers.ButtonObserverEvent;
 import org.bukkit.entity.Player;
 
 import java.util.function.Supplier;

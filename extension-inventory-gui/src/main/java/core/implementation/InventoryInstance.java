@@ -11,7 +11,7 @@ public abstract class InventoryInstance implements InventoryPlugin
 {
     @Getter
     private final FluentInventory inventory;
-    @Getter
+
     private final FluentTranslator translator;
     @Getter
     private final InventoryFactory factory;
@@ -24,5 +24,11 @@ public abstract class InventoryInstance implements InventoryPlugin
         {
             onCreate(createGuiEvent.getDecorator());
         });
+    }
+
+
+    public String translate(String key)
+    {
+        return translator.get(key);
     }
 }

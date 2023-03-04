@@ -1,7 +1,5 @@
 package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles;
 
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
-
 import java.util.List;
 
 public class ButtonDescriptionInfoBuilder {

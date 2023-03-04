@@ -2,8 +2,8 @@ package core.implementation;
 
 import core.implementation.managers.ButtonManagerImpl;
 import io.github.jwdeveloper.spigot.fluent.core.common.logger.SimpleLogger;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUI;
+import core.implementation.button.ButtonUI;
+import core.implementation.button.observer_button.ButtonObserverUI;
 import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

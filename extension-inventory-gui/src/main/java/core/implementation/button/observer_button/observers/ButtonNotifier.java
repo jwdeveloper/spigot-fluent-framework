@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers;
+package core.implementation.button.observer_button.observers;
 
 public interface ButtonNotifier<T>
 {

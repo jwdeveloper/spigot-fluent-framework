@@ -6,9 +6,13 @@ import core.api.managers.ChildrenManager;
 import java.util.Optional;
 
 public class ChildernManagerImpl implements ChildrenManager {
+
+    FluentInventory parent;
+
     @Override
-    public Optional<FluentInventory> getParent() {
-        return Optional.empty();
+    public Optional<FluentInventory> getParent()
+    {
+
     }
 
     @Override

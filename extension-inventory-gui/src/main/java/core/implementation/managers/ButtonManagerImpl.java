@@ -1,6 +1,6 @@
 package core.implementation.managers;
 
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
+import core.implementation.button.ButtonUI;
 import core.api.InventorySettings;
 import core.api.managers.buttons.ButtonManager;
 

@@ -1,6 +1,6 @@
-package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers;
+package core.implementation.button.observer_button.observers;
 
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
+import core.implementation.button.ButtonUI;
 import org.bukkit.entity.Player;
 
 public interface ButtonObservable<T>

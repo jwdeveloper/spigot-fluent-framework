@@ -1,4 +1,4 @@
-package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button;
+package core.implementation.button;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.enums.ButtonType;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events.ButtonUIEvent;

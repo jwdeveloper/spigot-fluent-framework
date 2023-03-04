@@ -8,7 +8,6 @@ import io.github.jwdeveloper.spigot.fluent.core.spigot.tasks.api.FluentTaskManag
 import io.github.jwdeveloper.spigot.fluent.core.translator.api.FluentTranslator;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.FluentButtonUIBuilder;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.FluentButtonUIFactory;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.ButtonUI;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.renderer.ButtonStyleRenderer;
 import org.bukkit.event.inventory.InventoryType;
 

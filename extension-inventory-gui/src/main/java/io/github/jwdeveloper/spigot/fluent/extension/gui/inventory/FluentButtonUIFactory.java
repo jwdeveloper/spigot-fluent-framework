@@ -14,9 +14,9 @@ import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.lis
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.observers.string.StringNotifierOptions;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.styles.FluentButtonStyle;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.InventoryUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUI;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.ButtonObserverUIBuilder;
-import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
+import core.implementation.button.observer_button.ButtonObserverUI;
+import core.implementation.button.observer_button.ButtonObserverUIBuilder;
+import core.implementation.button.observer_button.observers.ButtonObserverBuilder;
 import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.chest_ui.ChestUI;
 import io.github.jwdeveloper.spigot.fluent.core.common.java.StringUtils;
 import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;

@@ -19,14 +19,10 @@ public class ExampleInventory extends InventoryInstance {
 
     @Override
     public void onCreate(InventoryDecorator decorator) {
-
         var list = getFactory().<String>getListInventory();
-        list.refreshContent();
-        decorator
-                .withPlugin(list)
+        decorator.withPlugin(list)
                 .withHeight(3)
-                .withTitle(getTranslator().get("siema"));
-
+                .withTitle(translate("siema"));
 
         decorator.withButton(buttonUIBuilder ->
         {
@@ -38,10 +34,6 @@ public class ExampleInventory extends InventoryInstance {
                     btn.delete();
                 }
             });
-        });
-        list.setContentButtons(() -> strings, (data, button) ->
-        {
-
         });
     }
 }

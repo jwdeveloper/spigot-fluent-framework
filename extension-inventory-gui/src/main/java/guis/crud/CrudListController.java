@@ -1,13 +1,13 @@
-package io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.implementation.crud_list_ui;
+package guis.crud;
 
-import jw.fluent.api.desing_patterns.observer.implementation.Observer;
-import jw.fluent.api.spigot.gui.inventory_gui.button.ButtonUI;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserver;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverBuilder;
-import jw.fluent.api.spigot.gui.inventory_gui.button.observer_button.observers.ButtonObserverEvent;
-import jw.fluent.api.spigot.gui.inventory_gui.events.ButtonUIEvent;
-import jw.fluent.api.spigot.gui.inventory_gui.implementation.list_ui.ListUI;
-import jw.fluent.api.spigot.messages.message.MessageBuilder;
+import core.ExampleList;
+import io.github.jwdeveloper.spigot.fluent.core.observer.implementation.Observer;
+import io.github.jwdeveloper.spigot.fluent.core.spigot.messages.message.MessageBuilder;
+import core.implementation.button.ButtonUI;
+import core.implementation.button.observer_button.observers.ButtonObserver;
+import core.implementation.button.observer_button.observers.ButtonObserverBuilder;
+import core.implementation.button.observer_button.observers.ButtonObserverEvent;
+import io.github.jwdeveloper.spigot.fluent.extension.gui.inventory.inventory_gui.events.ButtonUIEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ import java.util.function.Consumer;
 
 public class CrudListController<T> {
     private final Material DEFAULT_BACKGROUND = Material.GRAY_STAINED_GLASS_PANE;
-    private final ListUI<T> listUI;
+    private final ExampleList<T> listUI;
     private final Observer<CrudListState> currentState;
     private CrudListState _currentState;
 
@@ -29,7 +29,7 @@ public class CrudListController<T> {
     public ButtonUIEvent onGetEvent = (a, b) -> {
     };
 
-    public CrudListController(ListUI<T> listUI) {
+    public CrudListController(ExampleList<T> listUI) {
         _currentState = CrudListState.None;
         currentState = new Observer<CrudListState>(this, "_currentState");
         this.listUI = listUI;
